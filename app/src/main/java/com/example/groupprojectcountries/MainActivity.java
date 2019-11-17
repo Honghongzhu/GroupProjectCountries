@@ -7,11 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.example.groupprojectcountries.Play.PlayActivity;
+import com.example.groupprojectcountries.Profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button playButton;
-    private Button profileButton;
+    private ImageView profileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

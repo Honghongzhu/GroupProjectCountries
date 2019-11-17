@@ -1,4 +1,4 @@
-package com.example.groupprojectcountries;
+package com.example.groupprojectcountries.Play;
 
 public class Continent {
     private String name;

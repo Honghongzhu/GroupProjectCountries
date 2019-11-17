@@ -1,4 +1,4 @@
-package com.example.groupprojectcountries;
+package com.example.groupprojectcountries.Play;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.groupprojectcountries.R;
 
 import java.util.ArrayList;
 import java.util.List;
