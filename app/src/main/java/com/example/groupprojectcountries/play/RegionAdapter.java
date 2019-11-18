@@ -16,6 +16,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,21 +62,17 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionView
         public void bind(final Region region) {
             nameTextView.setText(region.getName());
             //regionImageView.setImageResource();
-            //TODO: view.setOnClickListener will redirect to new activity
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context =  v.getContext();
 
-                    Fragment fragment = new RegionRecyclerFragment();
-                    
+                    Fragment fragment = new LevelFragment();
+                    FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_slot, fragment);
+                    fragmentTransaction.commit();
 
-//                    FragmentTransaction fragmentTransaction = context.getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.fragment_slot, fragment);
-//                    fragmentTransaction.commit();
-
-//                    Fragment fragment = new LevelFragment();
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.rv_region,fragment).commit();
                 }
             });
         }
