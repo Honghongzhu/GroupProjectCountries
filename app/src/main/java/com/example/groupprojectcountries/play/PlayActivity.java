@@ -18,6 +18,7 @@ import com.example.groupprojectcountries.profile.ProfileActivity;
 public class PlayActivity extends AppCompatActivity {
 
     private Button profileButton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
