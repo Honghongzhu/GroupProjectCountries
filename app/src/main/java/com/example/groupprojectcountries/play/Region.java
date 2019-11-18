@@ -1,10 +1,10 @@
-package com.example.groupprojectcountries.Play;
+package com.example.groupprojectcountries.play;
 
-public class Continent {
+public class Region {
     private String name;
     private String imageUrl;
 
-    public Continent(String name, String imageUrl){
+    public Region(String name, String imageUrl){
         this.name = name;
         this.imageUrl = imageUrl;
     }

@@ -1,4 +1,4 @@
-package com.example.groupprojectcountries.Play;
+package com.example.groupprojectcountries.play;
 
 import android.os.Bundle;
 
