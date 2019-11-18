@@ -17,20 +17,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Play.PlayActivity"></activity>
-        <activity android:name=".Profile.ProfileActivity"></activity>
-        <activity android:name=".FlagGame.Completed.FlagFinalResultsActivity"></activity>
-        <activity android:name=".FlagGame.Completed.FlagPracticeCompletedActivity"></activity>
-        <activity android:name=".FlagGame.Completed.FlagReadyToPracticeActivity"></activity>
-        <activity android:name=".FlagGame.Flashcards.FlagFlashcardsActivity"></activity>
-        <activity android:name=".FlagGame.Practice.FlagPracticeQuizActivity"></activity>
-        <activity android:name=".FlagGame.FinalQuiz.FlagFinalQuizActivity"></activity>
-        <activity android:name=".CityGame.Completed.CityReadyToPracticeActivity"></activity>
-        <activity android:name=".CityGame.Completed.CityFinalResultsActivity"></activity>
-        <activity android:name=".CityGame.Completed.CityPracticeCompletedActivity"></activity>
-        <activity android:name=".CityGame.Flashcards.CityFlashcardsActivity"></activity>
-        <activity android:name=".CityGame.Practice.CityPracticeQuizActivity"></activity>
-        <activity android:name=".CityGame.FinalQuiz.CityFinalQuizActivity"></activity>
+        <activity android:name=".play.PlayActivity"></activity>
+        <activity android:name=".profile.ProfileActivity"></activity>
+        <activity android:name=".flagGame.completed.FlagFinalResultsActivity"></activity>
+        <activity android:name=".flagGame.completed.FlagPracticeCompletedActivity"></activity>
+        <activity android:name=".flagGame.completed.FlagReadyToPracticeActivity"></activity>
+        <activity android:name=".flagGame.flashcards.FlagFlashcardsActivity"></activity>
+        <activity android:name=".flagGame.practice.FlagPracticeQuizActivity"></activity>
+        <activity android:name=".flagGame.finalQuiz.FlagFinalQuizActivity"></activity>
+        <activity android:name=".cityGame.completed.CityReadyToPracticeActivity"></activity>
+        <activity android:name=".cityGame.completed.CityFinalResultsActivity"></activity>
+        <activity android:name=".cityGame.completed.CityPracticeCompletedActivity"></activity>
+        <activity android:name=".cityGame.flashcards.cityFlashcardsActivity"></activity>
+        <activity android:name=".cityGame.practice.cityPracticeQuizActivity"></activity>
+        <activity android:name=".cityGame.finalQuiz.cityFinalQuizActivity"></activity>
     </application>
 
 </manifest>
