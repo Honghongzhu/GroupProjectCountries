@@ -67,7 +67,7 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionView
                 public void onClick(View v) {
                     Context context =  v.getContext();
 
-                    Fragment fragment = new LevelFragment();
+                    Fragment fragment = new CapFlagFragment();
                     FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_slot, fragment);

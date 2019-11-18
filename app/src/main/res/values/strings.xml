@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Group Project Countries</string>
     <string name="region">Regions</string>
+    <string name="level">Levels</string>
+    <string name="city_or_flag">Choose to learn capital cities or flags</string>
+    <string name="capital_cities">Capital cities</string>
+    <string name="flag">Flags</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
