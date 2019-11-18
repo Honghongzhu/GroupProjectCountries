@@ -15,25 +15,25 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ContinentAdapter extends RecyclerView.Adapter<ContinentAdapter.ContinentViewHolder> {
-    private List<Continent> continentsToAdapt;
+public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.ContinentViewHolder> {
+    private List<Region> continentsToAdapt;
 
-    public void setData(ArrayList<Continent> continentsToAdapt){
+    public void setData(ArrayList<Region> continentsToAdapt){
         this.continentsToAdapt = continentsToAdapt;
     }
 
     @NonNull
     @Override
     public ContinentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.continent,parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.region,parent, false);
         ContinentViewHolder continentViewHolder = new ContinentViewHolder(v);
         return continentViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ContinentViewHolder holder, int position) {
-        final Continent continentAtPosition = continentsToAdapt.get(position);
-        holder.bind(continentAtPosition);
+        final Region regionAtPosition = continentsToAdapt.get(position);
+        holder.bind(regionAtPosition);
     }
 
     @Override
@@ -53,9 +53,9 @@ public class ContinentAdapter extends RecyclerView.Adapter<ContinentAdapter.Cont
             nameTextView = v.findViewById(R.id.continentName);
         }
 
-        public void bind(Continent continent) {
-            nameTextView.setText(continent.getName());
-            String imageUrl = continent.getImageUrl();
+        public void bind(Region region) {
+            nameTextView.setText(region.getName());
+            String imageUrl = region.getImageUrl();
             Glide.with(view.getContext()).load(imageUrl).into(continentImageView);
             //TODO: view.setOnClickListener will redirect to new activity
         }

@@ -19,6 +19,18 @@
         </activity>
         <activity android:name=".Play.PlayActivity"></activity>
         <activity android:name=".Profile.ProfileActivity"></activity>
+        <activity android:name=".FlagGame.Completed.FlagFinalResultsActivity"></activity>
+        <activity android:name=".FlagGame.Completed.FlagPracticeCompletedActivity"></activity>
+        <activity android:name=".FlagGame.Completed.FlagReadyToPracticeActivity"></activity>
+        <activity android:name=".FlagGame.Flashcards.FlagFlashcardsActivity"></activity>
+        <activity android:name=".FlagGame.Practice.FlagPracticeQuizActivity"></activity>
+        <activity android:name=".FlagGame.FinalQuiz.FlagFinalQuizActivity"></activity>
+        <activity android:name=".CityGame.Completed.CityReadyToPracticeActivity"></activity>
+        <activity android:name=".CityGame.Completed.CityFinalResultsActivity"></activity>
+        <activity android:name=".CityGame.Completed.CityPracticeCompletedActivity"></activity>
+        <activity android:name=".CityGame.Flashcards.CityFlashcardsActivity"></activity>
+        <activity android:name=".CityGame.Practice.CityPracticeQuizActivity"></activity>
+        <activity android:name=".CityGame.FinalQuiz.CityFinalQuizActivity"></activity>
     </application>
 
 </manifest>
