@@ -49,19 +49,16 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionView
 
     public class RegionViewHolder extends RecyclerView.ViewHolder {
         private View view;
-        //private ImageView regionImageView;
         private TextView nameTextView;
 
         public RegionViewHolder(@NonNull View v) {
             super(v);
             view = v;
-            //regionImageView = v.findViewById(R.id.regionImage);
             nameTextView = v.findViewById(R.id.regionName);
         }
 
         public void bind(final Region region) {
             nameTextView.setText(region.getName());
-            //regionImageView.setImageResource();
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
