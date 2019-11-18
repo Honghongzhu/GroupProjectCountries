@@ -6,31 +6,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".play.PlayActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play page"
+    <Button
+        android:id="@+id/profile_button"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose a Continent to start learning"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/profile_icon"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_continents"
+    <FrameLayout
+        android:id="@+id/fragment_slot"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@id/profile_button">
+    </FrameLayout>
 
 
 

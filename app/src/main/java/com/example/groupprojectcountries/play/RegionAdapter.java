@@ -6,57 +6,56 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.groupprojectcountries.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.ContinentViewHolder> {
-    private List<Region> continentsToAdapt;
+public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionViewHolder> {
+    private List<Region> regionToAdapt;
 
     public void setData(ArrayList<Region> continentsToAdapt){
-        this.continentsToAdapt = continentsToAdapt;
+        this.regionToAdapt = continentsToAdapt;
     }
 
     @NonNull
     @Override
-    public ContinentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RegionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.region,parent, false);
-        ContinentViewHolder continentViewHolder = new ContinentViewHolder(v);
-        return continentViewHolder;
+        RegionViewHolder regionViewHolder = new RegionViewHolder(v);
+        return regionViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContinentViewHolder holder, int position) {
-        final Region regionAtPosition = continentsToAdapt.get(position);
+    public void onBindViewHolder(@NonNull RegionViewHolder holder, int position) {
+        final Region regionAtPosition = regionToAdapt.get(position);
         holder.bind(regionAtPosition);
     }
 
     @Override
     public int getItemCount() {
-        return continentsToAdapt.size();
+        return regionToAdapt.size();
     }
 
-    public class ContinentViewHolder extends RecyclerView.ViewHolder {
+    public class RegionViewHolder extends RecyclerView.ViewHolder {
         private View view;
-        private ImageView continentImageView;
+        //private ImageView regionImageView;
         private TextView nameTextView;
 
-        public ContinentViewHolder(@NonNull View v) {
+        public RegionViewHolder(@NonNull View v) {
             super(v);
             view = v;
-            continentImageView = v.findViewById(R.id.continentImage);
-            nameTextView = v.findViewById(R.id.continentName);
+            //regionImageView = v.findViewById(R.id.regionImage);
+            nameTextView = v.findViewById(R.id.regionName);
         }
 
         public void bind(Region region) {
             nameTextView.setText(region.getName());
-            String imageUrl = region.getImageUrl();
-            Glide.with(view.getContext()).load(imageUrl).into(continentImageView);
+            //regionImageView.setImageResource();
             //TODO: view.setOnClickListener will redirect to new activity
         }
     }

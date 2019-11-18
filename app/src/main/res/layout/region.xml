@@ -6,36 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/continentImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:contentDescription="TODO"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/regionImage"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:contentDescription="TODO"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"/>-->
 
     <TextView
-        android:id="@+id/continentName"
+        android:id="@+id/regionName"
         android:layout_width="275dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center_vertical"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/continentImage"
-        app:layout_constraintTop_toTopOf="@id/continentImage"/>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/continentName" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
