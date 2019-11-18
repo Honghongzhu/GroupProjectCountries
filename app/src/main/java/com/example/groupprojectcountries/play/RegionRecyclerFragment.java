@@ -38,7 +38,6 @@ public class RegionRecyclerFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        //regions = Arrays.asList(new Region[]{"Africa", "Americas", "Asia", "Europe", "Oceania"});
         regions = new ArrayList<>(Arrays.asList(new Region("Africa"), new Region("Americas"), new Region("Asia"), new Region("Europe"), new Region("Oceania")));
         RegionAdapter regionAdapter = new RegionAdapter();
         regionAdapter.setData(regions);

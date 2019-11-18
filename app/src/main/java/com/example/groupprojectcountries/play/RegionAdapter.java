@@ -1,5 +1,7 @@
 package com.example.groupprojectcountries.play;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionViewHolder> {
@@ -53,10 +58,26 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionView
             nameTextView = v.findViewById(R.id.regionName);
         }
 
-        public void bind(Region region) {
+        public void bind(final Region region) {
             nameTextView.setText(region.getName());
             //regionImageView.setImageResource();
             //TODO: view.setOnClickListener will redirect to new activity
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context =  v.getContext();
+
+                    Fragment fragment = new RegionRecyclerFragment();
+                    
+
+//                    FragmentTransaction fragmentTransaction = context.getSupportFragmentManager().beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragment_slot, fragment);
+//                    fragmentTransaction.commit();
+
+//                    Fragment fragment = new LevelFragment();
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.rv_region,fragment).commit();
+                }
+            });
         }
     }
 }
