@@ -4,5 +4,5 @@ import androidx.room.Entity;
 
 @Entity
 public class Country {
-    
+
 }
