@@ -15,7 +15,6 @@ import com.example.groupprojectcountries.profile.ProfileActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Button playButton;
-    private ImageView profileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +28,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, PlayActivity.class);
-                context.startActivity(intent);
-            }
-        });
-
-        //When clicked on the 'profile' button, the user will be directed to the ProfileActivity screen.
-        profileButton = findViewById(R.id.profile);
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = v.getContext();
-                Intent intent = new Intent(context, ProfileActivity.class);
                 context.startActivity(intent);
             }
         });
