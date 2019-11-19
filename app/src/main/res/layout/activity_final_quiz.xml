@@ -7,36 +7,39 @@
     android:background="@color/colorBackground"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/final_quiz_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FINAL QUIZ"
-        android:textStyle="bold|italic"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="35dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="66dp" />
+        android:orientation="vertical">
 
     <TextView
-        android:id="@+id/final_quiz_count"
+        android:id="@+id/fQuiz_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Question No."
-        android:textColor="@android:color/black"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="35dp" />
+        android:textColor="@android:color/black" />
 
     <TextView
-        android:id="@+id/final_quiz_timer"
+        android:id="@+id/fQuiz_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:text="00:30"
         android:textColor="@android:color/black"
-        android:textSize="40sp"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="-5dp" />
+        android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/fQuiz_title"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FINAL QUIZ"
+            android:textStyle="bold|italic"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
