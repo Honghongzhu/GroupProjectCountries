@@ -31,6 +31,8 @@
         <activity android:name=".cityGame.flashcards.cityFlashcardsActivity"></activity>
         <activity android:name=".cityGame.practice.cityPracticeQuizActivity"></activity>
         <activity android:name=".cityGame.finalQuiz.cityFinalQuizActivity"></activity>
+        <activity android:name=".play.CapFlagActivity"></activity>
+        <activity android:name=".play.LevelActivity"></activity>
     </application>
 
 </manifest>
