@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.cityGame.finalQuiz.CityFinalQuizActivity;
-import com.example.groupprojectcountries.cityGame.flashcards.CityFlashcardsActivity;
+import com.example.groupprojectcountries.cityGame.flashcards.cityFlashcardsActivity;
 import com.example.groupprojectcountries.flagGame.finalQuiz.FlagFinalQuizActivity;
 import com.example.groupprojectcountries.flagGame.flashcards.FlagFlashcardsActivity;
 
@@ -40,7 +40,7 @@ public class LevelActivity extends AppCompatActivity {
                 String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
-                    intent = new Intent(context, CityFlashcardsActivity.class);
+                    intent = new Intent(context, cityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 1);
                 }
                 else{
@@ -58,7 +58,7 @@ public class LevelActivity extends AppCompatActivity {
                 String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
-                    intent = new Intent(context, CityFlashcardsActivity.class);
+                    intent = new Intent(context, cityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 2);
                 }
                 else{
@@ -76,7 +76,7 @@ public class LevelActivity extends AppCompatActivity {
                 String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
-                    intent = new Intent(context, CityFlashcardsActivity.class);
+                    intent = new Intent(context, cityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 3);
                 }
                 else{
@@ -94,7 +94,7 @@ public class LevelActivity extends AppCompatActivity {
                 String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
-                    intent = new Intent(context, CityFlashcardsActivity.class);
+                    intent = new Intent(context, cityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 4);
                 }
                 else{
