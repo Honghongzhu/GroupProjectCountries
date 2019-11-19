@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.cityGame.finalQuiz.CityFinalQuizActivity;
-import com.example.groupprojectcountries.cityGame.flashcards.cityFlashcardsActivity;
-import com.example.groupprojectcountries.flagGame.finalQuiz.FlagFinalQuizActivity;
-import com.example.groupprojectcountries.flagGame.flashcards.FlagFlashcardsActivity;
+import com.example.groupprojectcountries.cityGame.CityFinalQuizActivity;
+import com.example.groupprojectcountries.cityGame.CityFlashcardsActivity;
+import com.example.groupprojectcountries.flagGame.FlagFinalQuizActivity;
+import com.example.groupprojectcountries.flagGame.FlagFlashcardsActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,16 +38,19 @@ public class LevelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 String category = getIntent().getStringExtra("CATEGORY");
-                Intent intent;
-                if(category == "capitalCities"){
-                    intent = new Intent(context, cityFlashcardsActivity.class);
+                if(category.equals("capitalCities")){
+                    System.out.println("level-cities");
+                    Intent intent = new Intent(context, CityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 1);
+                    context.startActivity(intent);
                 }
                 else{
-                    intent = new Intent(context, FlagFlashcardsActivity.class);
+                    System.out.println("level-flag");
+                    Intent intent = new Intent(context, FlagFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 1);
+                    context.startActivity(intent);
                 }
-                context.startActivity(intent);
+
             }
         });
 
@@ -58,7 +61,7 @@ public class LevelActivity extends AppCompatActivity {
                 String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
-                    intent = new Intent(context, cityFlashcardsActivity.class);
+                    intent = new Intent(context, CityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 2);
                 }
                 else{
@@ -76,7 +79,7 @@ public class LevelActivity extends AppCompatActivity {
                 String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
-                    intent = new Intent(context, cityFlashcardsActivity.class);
+                    intent = new Intent(context, CityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 3);
                 }
                 else{
@@ -94,7 +97,7 @@ public class LevelActivity extends AppCompatActivity {
                 String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
-                    intent = new Intent(context, cityFlashcardsActivity.class);
+                    intent = new Intent(context, CityFlashcardsActivity.class);
                     intent.putExtra("LEVEL", 4);
                 }
                 else{

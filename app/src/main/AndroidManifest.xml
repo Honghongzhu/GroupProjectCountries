@@ -22,15 +22,15 @@
         <activity android:name=".flagGame.completed.FlagFinalResultsActivity"></activity>
         <activity android:name=".flagGame.completed.FlagPracticeCompletedActivity"></activity>
         <activity android:name=".flagGame.completed.FlagReadyToPracticeActivity"></activity>
-        <activity android:name=".flagGame.flashcards.FlagFlashcardsActivity"></activity>
-        <activity android:name=".flagGame.practice.FlagPracticeQuizActivity"></activity>
-        <activity android:name=".flagGame.finalQuiz.FlagFinalQuizActivity"></activity>
+        <activity android:name=".flagGame.FlagFlashcardsActivity"></activity>
+        <activity android:name=".flagGame.FlagPracticeQuizActivity"></activity>
+        <activity android:name=".flagGame.FlagFinalQuizActivity"></activity>
         <activity android:name=".cityGame.completed.CityReadyToPracticeActivity"></activity>
         <activity android:name=".cityGame.completed.CityFinalResultsActivity"></activity>
         <activity android:name=".cityGame.completed.CityPracticeCompletedActivity"></activity>
-        <activity android:name=".cityGame.flashcards.cityFlashcardsActivity"></activity>
-        <activity android:name=".cityGame.practice.cityPracticeQuizActivity"></activity>
-        <activity android:name=".cityGame.finalQuiz.CityFinalQuizActivity"></activity>
+        <activity android:name=".cityGame.CityFlashcardsActivity"></activity>
+        <activity android:name=".cityGame.CityPracticeQuizActivity"></activity>
+        <activity android:name=".cityGame.CityFinalQuizActivity"></activity>
         <activity android:name=".play.CapFlagActivity"></activity>
         <activity android:name=".play.LevelActivity"></activity>
     </application>
