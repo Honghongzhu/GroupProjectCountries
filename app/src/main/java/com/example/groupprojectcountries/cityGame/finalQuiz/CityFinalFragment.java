@@ -14,10 +14,10 @@ import com.example.groupprojectcountries.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class cityFinalFragment extends Fragment {
+public class CityFinalFragment extends Fragment {
 
 
-    public cityFinalFragment() {
+    public CityFinalFragment() {
         // Required empty public constructor
     }
 

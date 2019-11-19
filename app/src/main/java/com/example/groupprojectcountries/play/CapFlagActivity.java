@@ -28,6 +28,7 @@ public class CapFlagActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, LevelActivity.class);
+                intent.putExtra("CATEGORY", "capitalCities");
                 context.startActivity(intent);
             }
         });
@@ -38,6 +39,7 @@ public class CapFlagActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, LevelActivity.class);
+                intent.putExtra("CATEGORY", "flags");
                 context.startActivity(intent);
             }
         });

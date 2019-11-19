@@ -64,6 +64,7 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionView
                 public void onClick(View v) {
                     Context context =  v.getContext();
                     Intent intent = new Intent(context, CapFlagActivity.class);
+                    intent.putExtra("REGION_NAME", region.getName());
                     context.startActivity(intent);
                 }
             });
