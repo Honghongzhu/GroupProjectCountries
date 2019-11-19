@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".flagGame.practice.FlagPracticeFragment">
+    android:background="@color/colorBackground"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/text_view_question"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="To which country does this flag belong to?"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="108dp" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/practice_quiz_flag"
+        android:layout_width="356dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="160dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/flag_b1"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:text="Option 3"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="500dp" />
+
+    <Button
+        android:id="@+id/flag_b2"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:text="Option 1"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="400dp" />
+
+    <Button
+        android:id="@+id/flag_b3"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:text="Option 2"
+        tools:layout_editor_absoluteX="190dp"
+        tools:layout_editor_absoluteY="400dp" />
+
+    <Button
+        android:id="@+id/flag_b4"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:text="Option 4"
+        tools:layout_editor_absoluteX="190dp"
+        tools:layout_editor_absoluteY="500dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
