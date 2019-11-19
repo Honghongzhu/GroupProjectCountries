@@ -10,6 +10,15 @@
     <string name="level_3">Level 3</string>
     <string name="level_4">Level 4</string>
     <string name="final_quiz">FINAL STRING</string>
+    <string name="ready">Are you ready for your practice quiz?</string>
+    <string name="no">No, please repeat the flashcards</string>
+    <string name="yes">Yes, I am ready!</string>
+    <string name="complete">You completed the practice quiz!</string>
+    <string name="points">Total points earned:</string>
+    <string name="correct">Number of correct answers: </string>
+    <string name="wrong">Number of wrong answers: </string>
+    <string name="ok">OK</string>
+    <string name="results">You completed the final quiz with the following results:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
