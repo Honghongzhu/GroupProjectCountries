@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.profile.ProfileActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

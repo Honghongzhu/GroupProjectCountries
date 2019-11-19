@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".play.PlayActivity"></activity>
-        <activity android:name=".profile.ProfileActivity"></activity>
         <activity android:name=".flagGame.completed.FlagFinalResultsActivity"></activity>
         <activity android:name=".flagGame.completed.FlagPracticeCompletedActivity"></activity>
         <activity android:name=".flagGame.completed.FlagReadyToPracticeActivity"></activity>

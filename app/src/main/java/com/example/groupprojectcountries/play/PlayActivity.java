@@ -1,55 +1,54 @@
 package com.example.groupprojectcountries.play;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.profile.ProfileActivity;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.example.groupprojectcountries.profile.ProfileFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PlayActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private ArrayList<Region> regions;
-    private RecyclerView.LayoutManager layoutManager;
-    private Button profileButton;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-        recyclerView = findViewById(R.id.rv_region);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        Fragment fragment = new RegionRecyclerFragment();
+        swapFragment(fragment);
 
-        regions = new ArrayList<>(Arrays.asList(new Region("Africa"), new Region("Americas"), new Region("Asia"), new Region("Europe"), new Region("Oceania")));
-        RegionAdapter regionAdapter = new RegionAdapter();
-        regionAdapter.setData(regions);
-        recyclerView.setAdapter(regionAdapter);
-
-        profileButton = findViewById(R.id.profile_button);
-        profileButton.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView = findViewById(R.id.navigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Context context = v.getContext();
-                Intent intent = new Intent(context, ProfileActivity.class);
-                context.startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                if(menuItem.getItemId() == R.id.navigation_learn){
+                    Fragment fragment = new RegionRecyclerFragment();
+                    swapFragment(fragment);
+                    return true;
+                }else if (menuItem.getItemId() == R.id.navigation_profile){
+                    Fragment fragment = new ProfileFragment();
+                    swapFragment(fragment);
+                    return true;
+                }
+                return false;
             }
         });
-
     }
+
+    private void swapFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_slot, fragment);
+        fragmentTransaction.commit();
+    }
+
 }

@@ -2,6 +2,8 @@
     <string name="app_name">Group Project Countries</string>
     <string name="region">Regions</string>
     <string name="level">Levels</string>
+    <string name="profile">Profile</string>
+    <string name="learn">Learn</string>
     <string name="city_or_flag">Choose to learn capital cities or flags</string>
     <string name="capital_cities">Capital cities</string>
     <string name="flag">Flags</string>

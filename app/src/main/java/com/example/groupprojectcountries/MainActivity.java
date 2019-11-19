@@ -7,10 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.groupprojectcountries.play.PlayActivity;
-import com.example.groupprojectcountries.profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
