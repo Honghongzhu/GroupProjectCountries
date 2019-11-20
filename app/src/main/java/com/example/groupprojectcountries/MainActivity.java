@@ -24,7 +24,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Button playButton;
-    public  List<APICountry> apiCountries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

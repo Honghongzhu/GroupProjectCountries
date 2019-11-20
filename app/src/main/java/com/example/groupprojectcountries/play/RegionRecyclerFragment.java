@@ -17,12 +17,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.groupprojectcountries.APICountry;
 import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +33,6 @@ public class RegionRecyclerFragment extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<Region> regions;
     private RecyclerView.LayoutManager layoutManager;
-    private  List<APICountry> apiCountries;
 
     public RegionRecyclerFragment() {
         // Required empty public constructor
@@ -65,7 +62,6 @@ public class RegionRecyclerFragment extends Fragment {
                 Gson gson = new Gson();
                 Country[] countryArray = gson.fromJson(response, Country[].class);
                 List<Country> countryList = Arrays.asList(countryArray);
-
                 AppDatabase db = AppDatabase.getInstance(getContext());
                 db.countryDao().insertAll(countryList);
                 queue.stop();

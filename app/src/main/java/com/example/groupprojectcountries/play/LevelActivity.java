@@ -33,6 +33,8 @@ public class LevelActivity extends AppCompatActivity {
         level4 = findViewById(R.id.level4);
         finalQuiz = findViewById(R.id.final_quiz);
 
+        final String region = getIntent().getStringExtra("REGION");
+        final String category = getIntent().getStringExtra("CATEGORY");
 
         //If the user clicks on one of the levels, flashcards will show depending on the chosen category.
         //It will also pass on which level is clicked.
@@ -40,19 +42,21 @@ public class LevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                String category = getIntent().getStringExtra("CATEGORY");
+                Intent intent;
                 if(category.equals("capitalCities")){
-                    System.out.println("level-cities");
-                    Intent intent = new Intent(context, CityFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 1);
+                    intent = new Intent(context, CityFlashcardsActivity.class);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "1");
                     context.startActivity(intent);
                 }
                 else{
-                    System.out.println("level-flag");
-                    Intent intent = new Intent(context, FlagFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 1);
-                    context.startActivity(intent);
+                    intent = new Intent(context, FlagFlashcardsActivity.class);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "1");
                 }
+                context.startActivity(intent);
 
             }
         });
@@ -61,15 +65,18 @@ public class LevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
                     intent = new Intent(context, CityFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 2);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "2");
                 }
                 else{
                     intent = new Intent(context, FlagFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 2);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "2");
                 }
                 context.startActivity(intent);
             }
@@ -79,15 +86,18 @@ public class LevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
                     intent = new Intent(context, CityFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 3);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "3");
                 }
                 else{
                     intent = new Intent(context, FlagFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 3);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "3");
                 }
                 context.startActivity(intent);
             }
@@ -97,15 +107,18 @@ public class LevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
                     intent = new Intent(context, CityFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 4);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "4");
                 }
                 else{
                     intent = new Intent(context, FlagFlashcardsActivity.class);
-                    intent.putExtra("LEVEL", 4);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "4");
                 }
                 context.startActivity(intent);
             }
@@ -115,15 +128,18 @@ public class LevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                String category = getIntent().getStringExtra("CATEGORY");
                 Intent intent;
                 if(category == "capitalCities"){
                     intent = new Intent(context, CityFinalQuizActivity.class);
-                    intent.putExtra("LEVEL", 5);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "5");
                 }
                 else{
                     intent = new Intent(context, FlagFinalQuizActivity.class);
-                    intent.putExtra("LEVEL", 5);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", "5");
                 }
                 context.startActivity(intent);
             }

@@ -29,7 +29,9 @@ public class CapFlagActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
+                String region = getIntent().getStringExtra("REGION");
                 Intent intent = new Intent(context, LevelActivity.class);
+                intent.putExtra("REGION", region);
                 intent.putExtra("CATEGORY", "capitalCities");
                 context.startActivity(intent);
             }
