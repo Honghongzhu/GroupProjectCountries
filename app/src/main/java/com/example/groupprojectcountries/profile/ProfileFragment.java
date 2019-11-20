@@ -40,7 +40,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        profile = v.findViewById(R.id.profile_button);
+        profile = v.findViewById(R.id.profile_photo);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

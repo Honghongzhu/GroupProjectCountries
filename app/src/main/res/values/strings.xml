@@ -1,27 +1,32 @@
 <resources>
     <string name="app_name">Group Project Countries</string>
-    <string name="region">Regions</string>
-    <string name="level">Levels</string>
+    <string name="region">Select Your Region</string>
+    <string name="level">Select Your Level</string>
     <string name="profile">Profile</string>
     <string name="learn">Learn</string>
     <string name="city_or_flag">Choose to learn capital cities or flags</string>
-    <string name="capital_cities">Capital cities</string>
-    <string name="flag">Flags</string>
+    <string name="capital_cities">CAPITAL CITIES</string>
+    <string name="flag">FLAGS</string>
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
     <string name="level_3">Level 3</string>
     <string name="level_4">Level 4</string>
-    <string name="final_quiz">FINAL STRING</string>
+    <string name="final_quiz">FINAL QUIZ</string>
     <string name="ready">Are you ready for your practice quiz?</string>
-    <string name="no">No, please repeat the flashcards</string>
+    <string name="no">No, please repeat\n the flashcards</string>
     <string name="yes">Yes, I am ready!</string>
-    <string name="complete">You completed the practice quiz!</string>
+    <string name="complete">Well done!\n\n You completed the practice\n quiz with the following results:</string>
     <string name="points">Total points earned:</string>
     <string name="correct">Number of correct answers: </string>
-    <string name="wrong">Number of wrong answers: </string>
+    <string name="wrong">Number of incorrect answers: </string>
     <string name="ok">OK</string>
-    <string name="results">You completed the final quiz with the following results:</string>
-
+    <string name="badges">Badges Earned:</string>
+    <string name="countryname">Country Name: </string>
+    <string name="capitalcity">Capital City: </string>
+    <string name="results">Congratulations!\n\n You completed the final quiz\nwith the following results:</string>
+    <string name="pq_title">Practice Quiz</string>
+    <string name="answer">Type your answer below: </string>
+    <string name="fq_title">Final Quiz</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
