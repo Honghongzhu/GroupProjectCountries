@@ -11,10 +11,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.groupprojectcountries.APICountry;
 import com.example.groupprojectcountries.R;
+import com.example.groupprojectcountries.database.AppDatabase;
+import com.example.groupprojectcountries.database.Country;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +35,7 @@ public class RegionRecyclerFragment extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<Region> regions;
     private RecyclerView.LayoutManager layoutManager;
+    private  List<APICountry> apiCountries;
 
     public RegionRecyclerFragment() {
         // Required empty public constructor
@@ -42,6 +55,33 @@ public class RegionRecyclerFragment extends Fragment {
         RegionAdapter regionAdapter = new RegionAdapter();
         regionAdapter.setData(regions);
         recyclerView.setAdapter(regionAdapter);
+
+        final RequestQueue queue = Volley.newRequestQueue(getActivity());
+        String url = "https://restcountries.eu/rest/v2/all";
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                Country[] countryArray = gson.fromJson(response, Country[].class);
+                List<Country> countryList = Arrays.asList(countryArray);
+
+                AppDatabase db = AppDatabase.getInstance(getContext());
+                db.countryDao().insertAll(countryList);
+                queue.stop();
+            }
+        };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("error");
+                queue.stop();
+            }
+        };
+        System.out.println(url);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener, errorListener);
+        queue.add(stringRequest);
 
         return v;
     }

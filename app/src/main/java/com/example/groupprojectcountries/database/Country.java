@@ -1,5 +1,7 @@
 package com.example.groupprojectcountries.database;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +9,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Country {
     @PrimaryKey
-    private int id;
+    @NonNull
+    private String alpha2Code;
 
     @ColumnInfo(name = "Name")
     private String name;
@@ -21,11 +24,8 @@ public class Country {
     @ColumnInfo(name = "Flag")
     private String flag;
 
-    @ColumnInfo(name = "Score")
-    private int score;
-
-    public void setId(int id) {
-        this.id = id;
+    public void setAlpha2Code(String alpha2Code) {
+        this.alpha2Code = alpha2Code;
     }
 
     public void setName(String name) {
@@ -44,12 +44,8 @@ public class Country {
         this.flag = flag;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public int getId() {
-        return id;
+    public String getAlpha2Code() {
+        return alpha2Code;
     }
 
     public String getName() {
@@ -66,9 +62,5 @@ public class Country {
 
     public String getFlag() {
         return flag;
-    }
-
-    public int getScore() {
-        return score;
     }
 }

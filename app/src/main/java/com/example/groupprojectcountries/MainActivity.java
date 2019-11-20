@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.play.PlayActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -40,32 +41,5 @@ public class MainActivity extends AppCompatActivity {
                 context.startActivity(intent);
             }
         });
-//        String url = "https://restcountries.eu/#similar-projects";
-//
-//        Response.Listener<String> responseListener = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                apiCountries = new Gson().fromJson(response,
-//                        new TypeToken<List<APICountry>>() { }.getType());
-//                for(int i = 0; i<apiCountries.size();i++){
-//                    System.out.println(apiCountries.get(i).getName());
-//
-//                }
-//            }
-//        };
-//
-//        Response.ErrorListener errorListener = new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                error.printStackTrace();
-//                System.out.println("the request is failed!");
-//            }
-//        };
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET,url,responseListener,errorListener);
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-//        requestQueue.add(stringRequest);
-
-
     }
 }

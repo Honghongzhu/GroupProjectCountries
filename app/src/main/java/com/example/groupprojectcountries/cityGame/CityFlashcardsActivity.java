@@ -19,24 +19,8 @@ public class CityFlashcardsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_flashcard);
-    }
-    //    private TextView countryName;
-//    private TextView capitalCity;
-//
-//    public CityFlashcardsActivity() {
-//    }
 
-//    @Nullable
-//    @Override
-//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.activity_city_flashcard,container,false);
-//
-//       countryName = view.findViewById(R.id.country_name);
-//       capitalCity = view.findViewById(R.id.capital_city_name);
-//        //countryName.setText();
-//        //capitalCity.setText();
-//        //get the country name and capital city from data base.
-//
-//        return view;
-//    }
+
+    }
+
 }

@@ -20,26 +20,4 @@ public class FlagFlashcardsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flag_flashcard);
     }
-
-//    private ImageView country_flag;
-//    private TextView flag_name;
-//
-//    public FlagFlashcardsActivity() {
-//    }
-
-//    @Nullable
-//    @Override
-//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-//                             @Nullable Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.activity_flag_flashcard,container,false);
-//
-//        country_flag = view.findViewById(R.id.country_flag);
-//        flag_name = view.findViewById(R.id.flag_name);
-//
-//        //set image and text on country_flag and flag_name;
-//
-//
-//
-//        return view;
-//    }
 }
