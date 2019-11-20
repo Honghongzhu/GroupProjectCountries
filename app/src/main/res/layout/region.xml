@@ -21,7 +21,7 @@
             android:id="@+id/regionName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="casual"
             android:gravity="center_vertical"
             android:layout_marginStart="20dp"
             android:text="Region"

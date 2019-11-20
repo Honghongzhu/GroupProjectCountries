@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Group Project Countries</string>
     <string name="region">Select Your Region</string>
-    <string name="level">Select Your Level</string>
+    <string name="level">Select Level</string>
     <string name="profile">Profile</string>
     <string name="learn">Learn</string>
     <string name="city_or_flag">Choose to learn capital cities or flags</string>
