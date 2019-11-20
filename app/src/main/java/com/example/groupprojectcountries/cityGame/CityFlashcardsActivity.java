@@ -42,38 +42,34 @@ public class CityFlashcardsActivity extends AppCompatActivity {
         int amount = countryList.size()/4;
 
         List<Country> subListOne = countryList.subList(0, amount);
-        List<Country> subListTwo = countryList.subList(amount+1, amount*2);
-        List<Country> subListThree = countryList.subList(amount*2+1, amount*3);
-        List<Country> subListFour = countryList.subList(amount*3+1, countryList.size()-1);
+        List<Country> subListTwo = countryList.subList(amount, amount*2);
+        List<Country> subListThree = countryList.subList(amount*2, amount*3);
+        List<Country> subListFour = countryList.subList(amount*3, countryList.size());
 
-        if(level == "1"){
-            //for (int i = 0; i < subListOne.size()-1; i++) {
+        switch (level){
+            case "1":
+                System.out.println("1");
                 countryName.setText(subListOne.get(0).getName());
                 capitalCity.setText(subListOne.get(0).getCapital());
-            //}
+                break;
+            case "2":
+                System.out.println("2");
+                countryName.setText(subListTwo.get(0).getName());
+                capitalCity.setText(subListTwo.get(0).getCapital());
+                break;
+            case "3":
+                System.out.println("3");
+                countryName.setText(subListThree.get(0).getName());
+                capitalCity.setText(subListThree.get(0).getCapital());
+                break;
+            case "4":
+                System.out.println("4");
+                countryName.setText(subListFour.get(0).getName());
+                capitalCity.setText(subListFour.get(0).getCapital());
+                break;
+            default:
+                System.out.println("nothing");
         }
-
-        else if(level == "2"){
-            //for (int i = 0; i < subListOne.size()-1; i++) {
-            countryName.setText(subListTwo.get(0).getName());
-            capitalCity.setText(subListTwo.get(0).getCapital());
-            //}
-        }
-
-        else if(level == "3"){
-            //for (int i = 0; i < subListOne.size()-1; i++) {
-            countryName.setText(subListThree.get(0).getName());
-            capitalCity.setText(subListThree.get(0).getCapital());
-            //}
-        }
-
-        else if(level == "4"){
-            //for (int i = 0; i < subListOne.size()-1; i++) {
-            countryName.setText(subListFour.get(0).getName());
-            capitalCity.setText(subListFour.get(0).getCapital());
-            //}
-        }
-
 
     }
 
