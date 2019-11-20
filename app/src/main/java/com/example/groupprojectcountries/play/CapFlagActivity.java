@@ -22,6 +22,9 @@ public class CapFlagActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cap_flag);
 
         capitalCities = findViewById(R.id.city);
+        flags = findViewById(R.id.flag);
+
+        //If the user clicks on capital cities, the LevelActivity will open and it passes on the value capitalCities.
         capitalCities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +35,7 @@ public class CapFlagActivity extends AppCompatActivity {
             }
         });
 
-        flags = findViewById(R.id.flag);
+        //If the user clicks on capital cities, the LevelActivity will open and it passes on the value flags.
         flags.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

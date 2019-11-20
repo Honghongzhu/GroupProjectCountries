@@ -33,6 +33,9 @@ public class LevelActivity extends AppCompatActivity {
         level4 = findViewById(R.id.level4);
         finalQuiz = findViewById(R.id.final_quiz);
 
+
+        //If the user clicks on one of the levels, flashcards will show depending on the chosen category.
+        //It will also pass on which level is clicked.
         level1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

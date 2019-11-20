@@ -57,6 +57,7 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.RegionView
             nameTextView = v.findViewById(R.id.regionName);
         }
 
+        //When user clicks on a region, the next CapFlagActivity will appear.
         public void bind(final Region region) {
             nameTextView.setText(region.getName());
             view.setOnClickListener(new View.OnClickListener() {

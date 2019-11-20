@@ -26,6 +26,8 @@ public class PlayActivity extends AppCompatActivity {
         Fragment fragment = new RegionRecyclerFragment();
         swapFragment(fragment);
 
+        //If the user clicks on the learning button, the user will be navigated to the learning fragment.
+        //If the user clicks on the profile button, the user will be navigated to the profile fragment.
         bottomNavigationView = findViewById(R.id.navigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -44,6 +46,7 @@ public class PlayActivity extends AppCompatActivity {
         });
     }
 
+    //This function is used to change fragments
     private void swapFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
