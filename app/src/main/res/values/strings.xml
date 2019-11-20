@@ -4,7 +4,7 @@
     <string name="level">Select Level</string>
     <string name="profile">Profile</string>
     <string name="learn">Learn</string>
-    <string name="city_or_flag">Choose to learn capital cities or flags</string>
+    <string name="city_or_flag">Capital Cities or Flags?</string>
     <string name="capital_cities">CAPITAL CITIES</string>
     <string name="flag">FLAGS</string>
     <string name="level_1">Level 1</string>

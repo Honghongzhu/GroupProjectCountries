@@ -17,7 +17,7 @@
         android:textColor="@android:color/black"
         android:textStyle="bold|italic"
         android:gravity="center_horizontal"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="15dp"/>
@@ -26,7 +26,7 @@
         android:id="@+id/city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border"
+        android:background="@drawable/squared_border"
         tools:layout_editor_absoluteY="63dp"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/title_cap_flag">
@@ -49,6 +49,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginLeft="10dp"
             android:fontFamily="casual"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:text="@string/capital_cities"
             android:textColor="@android:color/black"
@@ -70,7 +71,7 @@
         android:id="@+id/flag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border"
+        android:background="@drawable/squared_border"
         app:layout_constraintTop_toBottomOf="@id/line2">
 
         <ImageView
@@ -91,6 +92,7 @@
             android:textSize="20sp"
             android:text="@string/flag"
             android:fontFamily="casual"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="10dp"
