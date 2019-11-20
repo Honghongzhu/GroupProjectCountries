@@ -1,7 +1,7 @@
 package com.example.groupprojectcountries.profile;
 
 public class Badges {
-       private int ID;
+    private int ID;
     private String Badge_name;
     private int Badge_image;
     private int point_requirement;
