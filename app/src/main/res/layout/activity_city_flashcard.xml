@@ -4,74 +4,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cityGame.CityFlashcardsActivity">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:text="Level #"
-        android:textSize="20sp"/>
+    tools:context=".cityGame.CityFlashcardsActivity"
+    android:background="@color/colorBackground"
+    android:padding="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/flashcard"
+        android:id="@+id/city_flashcard"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/squared_border"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Previous_city"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintBottom_toTopOf="@id/Previous">
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/country_name"
+            android:id="@+id/cCountry_flash"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:text="Country name (will change)"
-            android:textSize="30sp"
+            android:fontFamily="casual"
             android:gravity="center"
-            app:layout_constraintStart_toStartOf="@id/flashcard"
-            app:layout_constraintTop_toTopOf="@id/flashcard"
-            app:layout_constraintBottom_toTopOf="@id/country_city"/>
+            android:text="@string/countryname"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/country_name_flash"
+            app:layout_constraintStart_toStartOf="@id/city_flashcard"
+            app:layout_constraintTop_toTopOf="@id/city_flashcard" />
 
         <TextView
-            android:id="@+id/country_city"
+            android:id="@+id/country_name_flash"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:text="Capital City (will change)"
-            android:textSize="25sp"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            app:layout_constraintStart_toStartOf="@id/flashcard"
-            app:layout_constraintEnd_toEndOf="@id/flashcard"
-            app:layout_constraintTop_toBottomOf="@id/country_name"
-            app:layout_constraintBottom_toBottomOf="@id/flashcard"/>
+            android:text="Indonesia"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/cCountry_flash"
+            app:layout_constraintLeft_toLeftOf="@id/city_flashcard"
+            app:layout_constraintRight_toRightOf="@id/city_flashcard"/>
+
+        <TextView
+            android:id="@+id/capitalcity_flash"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="@string/capitalcity"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toTopOf="@id/country_city_flash"
+            app:layout_constraintTop_toBottomOf="@id/country_name_flash"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/country_city_flash"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="Capital City"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/capitalcity_flash"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
     <ImageButton
-        android:id="@+id/Previous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:srcCompat="@android:drawable/ic_media_rew"
+        android:id="@+id/Previous_city"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flashcard"
-        app:layout_constraintEnd_toStartOf="@id/Next"
+        app:layout_constraintTop_toBottomOf="@id/city_flashcard"
+        app:layout_constraintEnd_toStartOf="@id/Next_city"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageButton
-        android:id="@+id/Next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/Next_city"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_weight="1"
-        app:srcCompat="@android:drawable/ic_media_ff"
-        app:layout_constraintStart_toEndOf="@id/Previous"
-        app:layout_constraintTop_toBottomOf="@id/flashcard"
+        android:background="@drawable/next"
+        app:layout_constraintStart_toEndOf="@id/Previous_city"
+        app:layout_constraintTop_toBottomOf="@id/city_flashcard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
