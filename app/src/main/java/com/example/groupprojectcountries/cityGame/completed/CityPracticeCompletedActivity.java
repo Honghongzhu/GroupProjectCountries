@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.cityGame.CityFlashcardsActivity;
 import com.example.groupprojectcountries.play.LevelActivity;
+import com.example.groupprojectcountries.play.PlayActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,7 @@ public class CityPracticeCompletedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent = new Intent(context, LevelActivity.class);
+                Intent intent = new Intent(context, PlayActivity.class);
                 context.startActivity(intent);
             }
         });

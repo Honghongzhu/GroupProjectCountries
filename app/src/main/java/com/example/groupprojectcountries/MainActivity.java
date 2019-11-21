@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.groupprojectcountries.database.AppDatabase;
+import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.play.PlayActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -40,5 +41,13 @@ public class MainActivity extends AppCompatActivity {
                 context.startActivity(intent);
             }
         });
+
+        AppDatabase db = AppDatabase.getInstance(this);
+        db.userDao().insertUser(new User(1, "Username"));
+//        int score = db.userDao().getUser().getScore();
+//        int newScore = score+2;
+//        db.userDao().updateScore(newScore);
+//        User user = db.userDao().getUser();
+
     }
 }

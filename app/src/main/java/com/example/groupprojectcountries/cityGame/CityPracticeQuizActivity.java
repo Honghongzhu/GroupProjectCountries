@@ -35,6 +35,7 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
     private int counter;
     private int nr;
     private String answer;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
         category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
 
-        AppDatabase db = AppDatabase.getInstance(this);
+        db = AppDatabase.getInstance(this);
         List<Country> countryList = db.countryDao().getCountriesByRegion(region);
 
         int amount = countryList.size() / 4;
@@ -94,9 +95,10 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
                 Context context =  v.getContext();
                 if(counter!=subList.size()-1){
                     answer = response.getText().toString();
-                    if(answer.equals(subList.get(counter).getCapital()))
+                    if(answer.equals(subList.get(counter).getCapital())) {
                         Toast.makeText(CityPracticeQuizActivity.this,
                                 "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
+                    }
                     else
                         Toast.makeText(CityPracticeQuizActivity.this,
                                 "Your answer was wrong. The correct answer was: " + subList.get(counter).getCapital(), Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package com.example.groupprojectcountries.play;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
+import com.example.groupprojectcountries.database.User;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

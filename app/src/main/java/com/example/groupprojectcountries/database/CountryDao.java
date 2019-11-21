@@ -12,9 +12,6 @@ public interface CountryDao {
     @Query("SELECT * FROM country")
     List<Country> getAll();
 
-//    @Query("DELETE FROM country")
-//    void deleteAll();
-
     @Query("SELECT * FROM country WHERE region = :region")
     List<Country> getCountriesByRegion(String region);
 
