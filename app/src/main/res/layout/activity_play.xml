@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".play.PlayActivity"
     android:padding="16dp"
-    android:background="@color/colorBackground">
+    android:background="@drawable/map_bg">
 
     <FrameLayout
         android:id="@+id/fragment_slot"
@@ -22,7 +22,7 @@
         android:id="@+id/navigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f9eedd"
+        android:background="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation">

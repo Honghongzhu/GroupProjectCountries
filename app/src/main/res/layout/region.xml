@@ -21,12 +21,12 @@
             android:id="@+id/regionName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:fontFamily="casual"
+            android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
             android:textAllCaps="true"
             android:text="Region"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="20sp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

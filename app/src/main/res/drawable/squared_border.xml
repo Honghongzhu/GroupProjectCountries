@@ -4,8 +4,8 @@
 
     // The width and color of the border
     <stroke
-        android:width="4dp"
-        android:color="@android:color/black" />
+        android:width="5dp"
+        android:color="#4a4b44" />
 
 
     // Add your desired padding
@@ -16,6 +16,7 @@
         android:bottom="10dp"    >
     </padding>
 
-    <solid android:color="#f9eedd"/>
+   <solid android:color="@android:color/darker_gray"/>
+
 
 </shape>

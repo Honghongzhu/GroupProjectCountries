@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/colorBackground">
+    android:background="@drawable/map_bg">
 
     <TextView
         android:id="@+id/title"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/complete"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="25sp"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +42,9 @@
         android:id="@+id/okButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ok"
+        android:text=" OKAY "
         android:textStyle="bold"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:background="@drawable/buttonstyle"
         android:layout_marginRight="30dp"
         android:layout_marginEnd="30dp"

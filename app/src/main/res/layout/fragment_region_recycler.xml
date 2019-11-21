@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".play.RegionRecyclerFragment"
     android:padding="16dp"
-    android:background="@color/colorBackground">
+    android:background="@drawable/map_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textStyle="bold|italic"
             android:gravity="center_horizontal"
             android:textSize="30sp"
