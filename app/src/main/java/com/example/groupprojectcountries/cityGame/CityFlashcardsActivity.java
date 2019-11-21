@@ -56,30 +56,27 @@ public class CityFlashcardsActivity extends AppCompatActivity {
         final List<Country> subListTwo = countryList.subList(amount, amount *2);
         final List<Country> subListThree = countryList.subList(amount *2, amount *3);
         final List<Country> subListFour = countryList.subList(amount *3, countryList.size());
+        counter = 0;
 
         switch (level){
             case "1":
                 countryName.setText(subListOne.get(0).getName());
                 capitalCity.setText(subListOne.get(0).getCapital());
-                counter = 0;
                 changeCard(subListOne, "1");
                 break;
             case "2":
                 countryName.setText(subListTwo.get(0).getName());
                 capitalCity.setText(subListTwo.get(0).getCapital());
-                counter = 0;
                 changeCard(subListTwo, "2");
                 break;
             case "3":
                 countryName.setText(subListThree.get(0).getName());
                 capitalCity.setText(subListThree.get(0).getCapital());
-                counter = 0;
                 changeCard(subListThree, "3");
                 break;
             case "4":
                 countryName.setText(subListFour.get(0).getName());
                 capitalCity.setText(subListFour.get(0).getCapital());
-                counter = 0;
                 changeCard(subListFour, "4");
                 break;
             default:
