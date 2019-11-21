@@ -21,6 +21,8 @@ public class LevelActivity extends AppCompatActivity {
     private TextView level3;
     private TextView level4;
     private TextView finalQuiz;
+    private String region;
+    private String category;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,8 +35,8 @@ public class LevelActivity extends AppCompatActivity {
         level4 = findViewById(R.id.level4);
         finalQuiz = findViewById(R.id.final_quiz);
 
-        final String region = getIntent().getStringExtra("REGION");
-        final String category = getIntent().getStringExtra("CATEGORY");
+        region = getIntent().getStringExtra("REGION");
+        category = getIntent().getStringExtra("CATEGORY");
 
         //If the user clicks on one of the levels, flashcards will show depending on the chosen category.
         //It will also pass on which level is clicked.
@@ -66,7 +68,7 @@ public class LevelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent;
-                if(category == "capitalCities"){
+                if(category.equals("capitalCities")){
                     intent = new Intent(context, CityFlashcardsActivity.class);
                     intent.putExtra("REGION", region);
                     intent.putExtra("CATEGORY", category);
@@ -87,7 +89,7 @@ public class LevelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent;
-                if(category == "capitalCities"){
+                if(category.equals("capitalCities")){
                     intent = new Intent(context, CityFlashcardsActivity.class);
                     intent.putExtra("REGION", region);
                     intent.putExtra("CATEGORY", category);
@@ -108,7 +110,7 @@ public class LevelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent;
-                if(category == "capitalCities"){
+                if(category.equals("capitalCities")){
                     intent = new Intent(context, CityFlashcardsActivity.class);
                     intent.putExtra("REGION", region);
                     intent.putExtra("CATEGORY", category);
@@ -129,7 +131,7 @@ public class LevelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent;
-                if(category == "capitalCities"){
+                if(category.equals("capitalCities")){
                     intent = new Intent(context, CityFinalQuizActivity.class);
                     intent.putExtra("REGION", region);
                     intent.putExtra("CATEGORY", category);

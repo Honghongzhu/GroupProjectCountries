@@ -61,48 +61,57 @@ public class CityFlashcardsActivity extends AppCompatActivity {
 
         switch (level){
             case "1":
-                System.out.println("1");
                 countryName.setText(subListOne.get(0).getName());
                 capitalCity.setText(subListOne.get(0).getCapital());
                 counter = 0;
-                next.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Context context =  v.getContext();
-                        if(counter!=subListOne.size()) {
-                            countryName.setText(subListOne.get(counter).getName());
-                            capitalCity.setText(subListOne.get(counter).getCapital());
-                            counter++;
-                        }
-                        else{
-                            Intent intent = new Intent(context, CityReadyToPracticeActivity.class);
-                            intent.putExtra("REGION", region);
-                            intent.putExtra("CATEGORY", "capitalCities");
-                            intent.putExtra("LEVEL", "1");
-                            context.startActivity(intent);
-                        }
-                    }
-                });
+                changeCard(subListOne, "1");
                 break;
             case "2":
-                System.out.println("2");
                 countryName.setText(subListTwo.get(0).getName());
                 capitalCity.setText(subListTwo.get(0).getCapital());
+                counter = 0;
+                changeCard(subListTwo, "2");
                 break;
             case "3":
-                System.out.println("3");
                 countryName.setText(subListThree.get(0).getName());
                 capitalCity.setText(subListThree.get(0).getCapital());
+                counter = 0;
+                changeCard(subListThree, "3");
                 break;
             case "4":
-                System.out.println("4");
                 countryName.setText(subListFour.get(0).getName());
                 capitalCity.setText(subListFour.get(0).getCapital());
+                counter = 0;
+                changeCard(subListFour, "4");
                 break;
             default:
                 System.out.println("nothing");
         }
 
     }
+
+    public void changeCard(final List<Country> subList, final String level){
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context =  v.getContext();
+                if(counter!=subList.size()) {
+                    countryName.setText(subList.get(counter).getName());
+                    capitalCity.setText(subList.get(counter).getCapital());
+                    counter++;
+                }
+                else{
+                    Intent intent = new Intent(context, CityReadyToPracticeActivity.class);
+                    intent.putExtra("REGION", region);
+                    intent.putExtra("CATEGORY", category);
+                    intent.putExtra("LEVEL", level);
+                    context.startActivity(intent);
+                }
+            }
+        });
+    }
+
+
+
 
 }
