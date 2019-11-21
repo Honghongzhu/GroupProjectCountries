@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#8dd9af"
     android:padding="16dp">
 
@@ -75,6 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/answer"
+                android:textColor="@android:color/black"
                 android:textSize="17dp"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
@@ -86,9 +87,22 @@
                 android:id="@+id/response_fcq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Type Here"
-                android:textSize="14dp"
-                android:textStyle="italic"/>
+                android:hint="Type Your Answer Here"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/black"
+                android:textSize="14dp" />
+
+            <Button
+                android:id="@+id/confirm1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonstyle"
+                android:text="@string/confirm"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"/>
+
 
         </LinearLayout>
 

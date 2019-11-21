@@ -74,6 +74,8 @@
             android:text="@string/answer"
             android:textSize="17dp"
             android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/fFlag_image"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -83,9 +85,19 @@
             android:id="@+id/response_ffq"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type Here"
             android:textSize="14dp"
-            android:textStyle="italic"/>
+            android:hint="Type Your Answer Here" />
+
+        <Button
+            android:id="@+id/confirm3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonstyle"
+            android:text="@string/confirm"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 

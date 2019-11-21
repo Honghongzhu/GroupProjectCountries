@@ -25,8 +25,9 @@
     <string name="capitalcity">Capital City: </string>
     <string name="results">Congratulations!\n\n You completed the final quiz\nwith the following results:</string>
     <string name="pq_title">Practice Quiz</string>
-    <string name="answer">Type your answer below: </string>
+    <string name="answer">Answer: </string>
     <string name="fq_title">Final Quiz</string>
+    <string name="confirm">Confirm</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
