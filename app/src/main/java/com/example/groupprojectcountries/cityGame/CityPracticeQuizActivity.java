@@ -58,35 +58,30 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
         final List<Country> subListTwo = countryList.subList(amount, amount *2);
         final List<Country> subListThree = countryList.subList(amount *2, amount *3);
         final List<Country> subListFour = countryList.subList(amount *3, countryList.size());
+        questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
+        counter = 0;
+        nr = 1;
 
         switch (level){
             case "1":
-                questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
                 countryName.setText(subListOne.get(0).getName());
-                counter = 0;
                 changeCountry(subListOne, "1");
                 break;
             case "2":
-                questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
                 countryName.setText(subListTwo.get(0).getName());
-                counter = 0;
                 changeCountry(subListTwo, "2");
                 break;
             case "3":
-                questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
                 countryName.setText(subListThree.get(0).getName());
-                counter = 0;
                 changeCountry(subListThree, "3");
                 break;
             case "4":
-                questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
                 countryName.setText(subListFour.get(0).getName());
-                counter = 0;
                 changeCountry(subListFour, "4");
                 break;
             case "5":
-                questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
                 countryName.setText(countryList.get(0).getName());
+                changeCountry(countryList, "5");
             default:
                 System.out.println("nothing");
         }
@@ -105,6 +100,7 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
                     else
                         Toast.makeText(CityPracticeQuizActivity.this,
                                 "Your answer was wrong. The correct answer was: " + subList.get(counter).getCapital(), Toast.LENGTH_SHORT).show();
+                    response.setText("");
                     nr++;
                     questionNr.setText(String.format(Locale.getDefault(),"Question %s", nr));
                     countryName.setText(subList.get(counter+1).getName());
