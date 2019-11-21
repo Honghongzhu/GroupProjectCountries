@@ -28,9 +28,8 @@ public class CityFlashcardsActivity extends AppCompatActivity {
 
     private TextView countryName;
     private TextView capitalCity;
-    private ImageButton next;
+    private Button next;
     private int counter;
-    private int amount;
     private String region;
     private String category;
     private String level;
@@ -48,16 +47,15 @@ public class CityFlashcardsActivity extends AppCompatActivity {
         region = getIntent().getStringExtra("REGION");
         category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
-        System.out.println("Region:" + region + " Category:" + category + " Level:" + level);
 
         List<Country> countryList = db.countryDao().getCountriesByRegion(region);
 
-        amount = countryList.size()/4;
+        int amount = countryList.size() / 4;
 
         final List<Country> subListOne = countryList.subList(0, amount);
-        final List<Country> subListTwo = countryList.subList(amount, amount*2);
-        final List<Country> subListThree = countryList.subList(amount*2, amount*3);
-        final List<Country> subListFour = countryList.subList(amount*3, countryList.size());
+        final List<Country> subListTwo = countryList.subList(amount, amount *2);
+        final List<Country> subListThree = countryList.subList(amount *2, amount *3);
+        final List<Country> subListFour = countryList.subList(amount *3, countryList.size());
 
         switch (level){
             case "1":
@@ -87,7 +85,6 @@ public class CityFlashcardsActivity extends AppCompatActivity {
             default:
                 System.out.println("nothing");
         }
-
     }
 
     public void changeCard(final List<Country> subList, final String level){
@@ -95,9 +92,9 @@ public class CityFlashcardsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context =  v.getContext();
-                if(counter!=subList.size()) {
-                    countryName.setText(subList.get(counter).getName());
-                    capitalCity.setText(subList.get(counter).getCapital());
+                if(counter!=subList.size()-1) {
+                    countryName.setText(subList.get(counter+1).getName());
+                    capitalCity.setText(subList.get(counter+1).getCapital());
                     counter++;
                 }
                 else{
