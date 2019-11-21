@@ -1,6 +1,9 @@
 package com.example.groupprojectcountries.profile;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,15 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.groupprojectcountries.MainActivity;
 import com.example.groupprojectcountries.R;
+import com.example.groupprojectcountries.play.PlayActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment{
 
     private ImageView profile;
     private ImageView user_photo;
@@ -27,6 +33,7 @@ public class ProfileFragment extends Fragment {
     private RecyclerView Badges_rv;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ImageButton exitButton;
 
 
     public ProfileFragment() {
@@ -40,13 +47,26 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
+         exitButton = v.findViewById(R.id.exit_button);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getActivity(), MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
         profile = v.findViewById(R.id.profile_photo);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //set method about profile_button.
             }
         });
+
+
 //create a database or fake data base to get the user information
         user_photo=v.findViewById(R.id.profile_photo);
         //user_photo.setImageResource();//set user profile
@@ -70,6 +90,12 @@ public class ProfileFragment extends Fragment {
 
 
         return v;
+
+
+        }
+
+
+
+
     }
 
-}
