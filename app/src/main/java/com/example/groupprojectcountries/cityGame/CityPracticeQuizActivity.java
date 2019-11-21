@@ -135,10 +135,7 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
     public void updateScore(){
         AppDatabase db = AppDatabase.getInstance(this);
         int curScore = db.userDao().getUser().getScore();
-        System.out.println("current score " + curScore);
         int newScore = curScore+1;
-        System.out.println("score "+ score);
-        System.out.println("new score " + newScore);
         db.userDao().updateScorePerRound(score);
         db.userDao().updateScore(newScore);
     }

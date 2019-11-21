@@ -40,7 +40,7 @@
             android:fontFamily="casual"
             android:text="@string/points"
             android:textColor="@android:color/black"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textStyle="italic"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp" />
@@ -53,7 +53,7 @@
             android:textColor="@android:color/black"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button

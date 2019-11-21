@@ -29,10 +29,8 @@ public class CityPracticeCompletedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_completed);
         AppDatabase db = AppDatabase.getInstance(this);
-        User user = db.userDao().getUser();
         score = findViewById(R.id.nPoints);
         int scoreDb = db.userDao().getUser().getScorePerRound();
-        System.out.println(scoreDb);
         score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
 
         okButton = findViewById(R.id.okButton);
