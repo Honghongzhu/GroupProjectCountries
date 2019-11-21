@@ -13,7 +13,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/squared_border"
-        app:layout_constraintBottom_toTopOf="@id/Previous_city"
+        app:layout_constraintBottom_toTopOf="@id/next_city"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,27 +80,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     <ImageButton
-        android:id="@+id/Previous_city"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/city_flashcard"
-        app:layout_constraintEnd_toStartOf="@id/Next_city"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <ImageButton
-        android:id="@+id/Next_city"
+        android:id="@+id/next_city"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_weight="1"
         android:background="@drawable/next"
-        app:layout_constraintStart_toEndOf="@id/Previous_city"
+        app:layout_constraintStart_toEndOf="@id/city_flashcard"
         app:layout_constraintTop_toBottomOf="@id/city_flashcard"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
