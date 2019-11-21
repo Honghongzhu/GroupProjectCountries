@@ -19,4 +19,7 @@ public interface UserDao {
 
     @Query("UPDATE user SET score =:score")
     void updateScore(int score);
+
+    @Query("UPDATE user SET scorePerRound =:scorePerRound")
+    void updateScorePerRound(int scorePerRound);
 }

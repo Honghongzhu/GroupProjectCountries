@@ -19,24 +19,42 @@
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/points"/>
+        app:layout_constraintBottom_toTopOf="@id/pointsLayout"/>
 
-    <TextView
-        android:id="@+id/points"
-        android:layout_width="260dp"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/pointsLayout"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:background="@drawable/squared_border"
-        android:fontFamily="casual"
-        android:text="@string/points"
-        android:textColor="@android:color/black"
-        android:textSize="15sp"
-        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@id/okButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="casual"
+            android:text="@string/points"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/nPoints"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="15sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button
         android:id="@+id/okButton"
@@ -48,7 +66,7 @@
         android:background="@drawable/buttonstyle"
         android:layout_marginRight="30dp"
         android:layout_marginEnd="30dp"
-        app:layout_constraintTop_toBottomOf="@id/points"
+        app:layout_constraintTop_toBottomOf="@id/pointsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

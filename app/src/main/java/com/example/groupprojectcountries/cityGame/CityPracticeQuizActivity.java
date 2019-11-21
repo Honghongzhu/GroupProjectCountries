@@ -14,6 +14,7 @@ import com.example.groupprojectcountries.cityGame.completed.CityPracticeComplete
 import com.example.groupprojectcountries.cityGame.completed.CityReadyToPracticeActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
+import com.example.groupprojectcountries.database.User;
 
 import org.w3c.dom.Text;
 
@@ -36,6 +37,7 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
     private int nr;
     private String answer;
     private AppDatabase db;
+    private int score;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +52,12 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
         category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
 
+        counter = 0;
+        nr = 1;
+        score = 0;
+
         db = AppDatabase.getInstance(this);
+        db.userDao().updateScorePerRound(score);
         List<Country> countryList = db.countryDao().getCountriesByRegion(region);
 
         int amount = countryList.size() / 4;
@@ -60,8 +67,6 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
         final List<Country> subListThree = countryList.subList(amount *2, amount *3);
         final List<Country> subListFour = countryList.subList(amount *3, countryList.size());
         questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
-        counter = 0;
-        nr = 1;
 
         switch (level){
             case "1":
@@ -94,14 +99,7 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context =  v.getContext();
                 if(counter!=subList.size()-1){
-                    answer = response.getText().toString();
-                    if(answer.equals(subList.get(counter).getCapital())) {
-                        Toast.makeText(CityPracticeQuizActivity.this,
-                                "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                        Toast.makeText(CityPracticeQuizActivity.this,
-                                "Your answer was wrong. The correct answer was: " + subList.get(counter).getCapital(), Toast.LENGTH_SHORT).show();
+                    checkAnswer(subList);
                     response.setText("");
                     nr++;
                     questionNr.setText(String.format(Locale.getDefault(),"Question %s", nr));
@@ -109,14 +107,40 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
                     counter++;
                 }
                 else{
+                    checkAnswer(subList);
                     Intent intent = new Intent(context, CityPracticeCompletedActivity.class);
                     intent.putExtra("REGION", region);
                     intent.putExtra("CATEGORY", category);
                     intent.putExtra("LEVEL", level);
                     context.startActivity(intent);
                 }
+
             }
         });
+    }
+
+    public void checkAnswer(List<Country> subList){
+        answer = response.getText().toString().toUpperCase();
+        if(answer.equals(subList.get(counter).getCapital().toUpperCase())) {
+            score++;
+            updateScore();
+            Toast.makeText(CityPracticeQuizActivity.this,
+                    "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
+        }
+        else
+            Toast.makeText(CityPracticeQuizActivity.this,
+                    "Your answer was wrong. The correct answer was: " + subList.get(counter).getCapital(), Toast.LENGTH_SHORT).show();
+    }
+
+    public void updateScore(){
+        AppDatabase db = AppDatabase.getInstance(this);
+        int curScore = db.userDao().getUser().getScore();
+        System.out.println("current score " + curScore);
+        int newScore = curScore+1;
+        System.out.println("score "+ score);
+        System.out.println("new score " + newScore);
+        db.userDao().updateScorePerRound(score);
+        db.userDao().updateScore(newScore);
     }
 
 }

@@ -9,6 +9,7 @@ public class User {
     @PrimaryKey
     private int id;
     private int score;
+    private int scorePerRound;
     private String name;
 
     public User(int id, String name){
@@ -22,6 +23,10 @@ public class User {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void setScorePerRound(int scorePerRound) {
+        this.scorePerRound = scorePerRound;
     }
 
     public void setName(String name) {
@@ -38,5 +43,9 @@ public class User {
 
     public int getId() {
         return id;
+    }
+
+    public int getScorePerRound() {
+        return scorePerRound;
     }
 }
