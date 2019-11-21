@@ -62,7 +62,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="131dp" />
+            tools:layout_editor_absoluteY="131dp"/>
 
 
         <TextView

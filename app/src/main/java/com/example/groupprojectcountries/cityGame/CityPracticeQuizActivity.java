@@ -11,12 +11,8 @@ import android.widget.Toast;
 
 import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.cityGame.completed.CityPracticeCompletedActivity;
-import com.example.groupprojectcountries.cityGame.completed.CityReadyToPracticeActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
-import com.example.groupprojectcountries.database.User;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Locale;
@@ -28,8 +24,8 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
 
     private TextView questionNr;
     private TextView countryName;
-    private EditText response;
-    private Button confirm;
+    private EditText userInput;
+    private Button confirmButton;
     private String region;
     private String category;
     private String level;
@@ -46,8 +42,8 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
 
         questionNr = findViewById(R.id.pQuiz_count_city);
         countryName = findViewById(R.id.pCity_text);
-        response = findViewById(R.id.response_pcq);
-        confirm = findViewById(R.id.confirm2);
+        userInput = findViewById(R.id.response_pcq);
+        confirmButton = findViewById(R.id.confirm2);
         region = getIntent().getStringExtra("REGION");
         category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
@@ -71,42 +67,38 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
         switch (level){
             case "1":
                 countryName.setText(subListOne.get(0).getName());
-                changeCountry(subListOne, "1");
+                nextCountry(subListOne, "1");
                 break;
             case "2":
                 countryName.setText(subListTwo.get(0).getName());
-                changeCountry(subListTwo, "2");
+                nextCountry(subListTwo, "2");
                 break;
             case "3":
                 countryName.setText(subListThree.get(0).getName());
-                changeCountry(subListThree, "3");
+                nextCountry(subListThree, "3");
                 break;
             case "4":
                 countryName.setText(subListFour.get(0).getName());
-                changeCountry(subListFour, "4");
+                nextCountry(subListFour, "4");
                 break;
-            case "5":
-                countryName.setText(countryList.get(0).getName());
-                changeCountry(countryList, "5");
             default:
                 System.out.println("nothing");
         }
     }
 
-    public void changeCountry(final List<Country> subList, final String level){
-        confirm.setOnClickListener(new View.OnClickListener() {
+    public void nextCountry(final List<Country> subList, final String level){
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context =  v.getContext();
-                if(counter!=subList.size()-1){
+                if(counter < subList.size()-1){
                     checkAnswer(subList);
-                    response.setText("");
+                    userInput.setText("");
                     nr++;
                     questionNr.setText(String.format(Locale.getDefault(),"Question %s", nr));
                     countryName.setText(subList.get(counter+1).getName());
                     counter++;
-                }
-                else{
+                } else{
                     checkAnswer(subList);
                     Intent intent = new Intent(context, CityPracticeCompletedActivity.class);
                     intent.putExtra("REGION", region);
@@ -120,7 +112,7 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
     }
 
     public void checkAnswer(List<Country> subList){
-        answer = response.getText().toString().toUpperCase();
+        answer = userInput.getText().toString().toUpperCase();
         if(answer.equals(subList.get(counter).getCapital().toUpperCase())) {
             score++;
             updateScore();

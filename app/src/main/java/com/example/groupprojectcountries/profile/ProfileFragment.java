@@ -2,8 +2,6 @@ package com.example.groupprojectcountries.profile;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,9 +15,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.groupprojectcountries.MainActivity;
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.play.PlayActivity;
+import com.example.groupprojectcountries.database.AppDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,13 +24,12 @@ import com.example.groupprojectcountries.play.PlayActivity;
 public class ProfileFragment extends Fragment{
 
     private ImageView profile;
-    private ImageView user_photo;
-    private TextView user_name;
-    private TextView user_mark;
+    private ImageView userPhoto;
+    private TextView userName;
+    private TextView userScore;
     private RecyclerView Badges_rv;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ImageButton exitButton;
 
 
     public ProfileFragment() {
@@ -46,39 +42,29 @@ public class ProfileFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
-
-         exitButton = v.findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent (getActivity(), MainActivity.class);
-                startActivity(intent);
-
-            }
-        });
+        Context context = v.getContext();
+        AppDatabase db = AppDatabase.getInstance(context);
 
         profile = v.findViewById(R.id.profile_photo);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //set method about profile_button.
+                //TODO: set method about profile_button.
             }
         });
 
 
-//create a database or fake data base to get the user information
-        user_photo=v.findViewById(R.id.profile_photo);
+        //TODO: create a database or fake data base to get the user information
+        userPhoto = v.findViewById(R.id.profile_photo);
         //user_photo.setImageResource();//set user profile
 
-        user_name=v.findViewById(R.id.profile_name);
-        //user_name.setText();//set user name
+        userName = v.findViewById(R.id.profile_name);
+        db.userDao().getUser().getName();
 
-        user_mark=v.findViewById(R.id.profile_mark);
-        //user_mark.setText();//get user mark from data base
+        userScore = v.findViewById(R.id.profile_score);
+        db.userDao().getUser().getScore();
 
         Badges_rv = v.findViewById(R.id.badges_rv);
-
 
         Badges_rv.setHasFixedSize(true);
 

@@ -12,24 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/profile_photo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp">
-
-            <ImageButton
-                android:id="@+id/exit_button"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/exit_button" />
-
-        </LinearLayout>
 
         <ImageView
             android:id="@+id/profile_photo"
@@ -37,7 +19,7 @@
             android:layout_height="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/profile_icon" />
 
         <TextView
@@ -45,7 +27,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Name"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="20dp"
@@ -56,11 +37,10 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_photo" />
 
         <TextView
-            android:id="@+id/profile_mark"
+            android:id="@+id/profile_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="#####"
             android:textSize="15sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +59,8 @@
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_mark" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_score"
+            android:layout_marginLeft="15dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/badges_rv"

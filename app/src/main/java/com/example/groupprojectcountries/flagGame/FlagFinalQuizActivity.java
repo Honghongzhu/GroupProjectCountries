@@ -7,77 +7,100 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.cityGame.CityPracticeQuizActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
-import com.example.groupprojectcountries.database.CountryDao;
 import com.example.groupprojectcountries.flagGame.completed.FlagFinalResultsActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
+import java.util.Locale;
 
 public class FlagFinalQuizActivity extends AppCompatActivity {
+    private TextView questionNr;
     private EditText userInput;
-    private Button checkAnswer;
+    private Button confirmButton;
     private ImageView flagImage;
     private Integer counter;
     private List<Country> countryList;
-    private String CorrectAnswer;
+    private String correctAnswer;
+    private String flagUrl;
+    private String region;
+    private int score;
+    private int nr;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flag_final_quiz);
 
-        AppDatabase db = AppDatabase.getInstance(this);
-       // final String region = getIntent().getStringExtra("REGION");
-
-        countryList = db.countryDao().getAll();
-
+        questionNr = findViewById(R.id.pQuiz_count_flag);
         userInput = findViewById(R.id.response_ffq);
-        checkAnswer= findViewById(R.id.confirm3);
+        confirmButton = findViewById(R.id.confirm3);
         flagImage = findViewById(R.id.fFlag_image);
 
-        counter=0;
-        CorrectAnswer=countryList.get(counter).getName().toUpperCase();
-        //flagImage
+        AppDatabase db = AppDatabase.getInstance(this);
+        region = getIntent().getStringExtra("REGION");
+        countryList = db.countryDao().getCountriesByRegion(region);
+        score = 1;
+        db.userDao().updateScorePerRound(score);
 
-        checkAnswer.setOnClickListener(new View.OnClickListener() {
+        counter = 0;
+        correctAnswer = countryList.get(counter).getName().toUpperCase();
+        flagUrl = countryList.get(counter).getFlag();
+        Glide.with(this).load(flagUrl).into(flagImage);
+        questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
+
+        nr = 1;
+        nextQuestion();
+    }
+
+    public void nextQuestion(){
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                if(userInput.getText().toString().toUpperCase().equals(CorrectAnswer)){
-                    Toast.makeText(FlagFinalQuizActivity.this,
-                            "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(FlagFinalQuizActivity.this,
-                            "Your answer was wrong. The correct answer was: " + countryList.get(counter).getName(), Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                Context context =  v.getContext();
+                if(counter < countryList.size()-1){
+                    checkAnswer();
+                    userInput.setText("");
+                    nr++;
+                    questionNr.setText(String.format(Locale.getDefault(),"Question %s", nr));
+                    flagUrl = countryList.get(counter+1).getFlag();
+                    Glide.with(context).load(flagUrl).into(flagImage);
+                    counter++;
                 }
-                NextQuestion(counter,view);
-
+                else{
+                    checkAnswer();
+                    Intent intent = new Intent(context, FlagFinalResultsActivity.class);
+                    context.startActivity(intent);
+                }
             }
         });
     }
 
-    public void NextQuestion(final int q,View view){
-        Context context =  view.getContext();
-        counter=q;
-        counter++;
-        if (counter<countryList.size()){
+    public void checkAnswer(){
+        String answer = userInput.getText().toString().toUpperCase();
+        if(answer.equals(correctAnswer)) {
+            score++;
+            updateScore();
+            Toast.makeText(FlagFinalQuizActivity.this,
+                    "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(FlagFinalQuizActivity.this,
+                    "Your answer was wrong. The correct answer was: " + countryList.get(counter).getName(), Toast.LENGTH_SHORT).show();
+    }
 
-            CorrectAnswer=countryList.get(counter).getName();
-            CorrectAnswer.toUpperCase();
-            //flagImage.setImageResource(countryList.get(counter).getFlag());
-        }else {
-            Intent intent = new Intent(context, FlagFinalResultsActivity.class);
-            context.startActivity(intent);
-        }
-
-
+    public void updateScore(){
+        AppDatabase db = AppDatabase.getInstance(this);
+        int curScore = db.userDao().getUser().getScore();
+        int newScore = curScore + 1;
+        db.userDao().updateScorePerRound(score);
+        db.userDao().updateScore(newScore);
     }
 }

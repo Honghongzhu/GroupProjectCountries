@@ -3,21 +3,16 @@ package com.example.groupprojectcountries.flagGame;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.cityGame.completed.CityReadyToPracticeActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.flagGame.completed.FlagReadyToPracticeActivity;
@@ -63,43 +58,42 @@ public class FlagFlashcardsActivity extends AppCompatActivity{
                 countryName.setText(subListOne.get(0).getName());
                 flagUrl = subListOne.get(0).getFlag();
                 Glide.with(this).load(flagUrl).into(flag);
-                changeCard(subListOne, "1");
+                nextCard(subListOne, "1");
                 break;
             case "2":
                 countryName.setText(subListTwo.get(0).getName());
                 flagUrl = subListTwo.get(0).getFlag();
                 Glide.with(this).load(flagUrl).into(flag);
-                changeCard(subListTwo, "2");
+                nextCard(subListTwo, "2");
                 break;
             case "3":
                 countryName.setText(subListThree.get(0).getName());
                 flagUrl = subListThree.get(0).getFlag();
                 Glide.with(this).load(flagUrl).into(flag);
-                changeCard(subListThree, "3");
+                nextCard(subListThree, "3");
                 break;
             case "4":
                 countryName.setText(subListFour.get(0).getName());
                 flagUrl = subListFour.get(0).getFlag();
                 Glide.with(this).load(flagUrl).into(flag);
-                changeCard(subListFour, "4");
+                nextCard(subListFour, "4");
                 break;
             default:
                 System.out.println("nothing");
         }
     }
 
-    public void changeCard(final List<Country> subList, final String level){
+    public void nextCard(final List<Country> subList, final String level){
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context =  v.getContext();
-                if(counter!=subList.size()-1) {
+                if(counter < subList.size()-1) {
                     countryName.setText(subList.get(counter+1).getName());
                     String flagUrl = subList.get(counter+1).getFlag();
                     Glide.with(context).load(flagUrl).into(flag);
                     counter++;
-                }
-                else{
+                } else{
                     Intent intent = new Intent(context, FlagReadyToPracticeActivity.class);
                     intent.putExtra("REGION", region);
                     intent.putExtra("CATEGORY", category);

@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.cityGame.CityPracticeQuizActivity;
-import com.example.groupprojectcountries.cityGame.completed.CityPracticeCompletedActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.flagGame.completed.FlagPracticeCompletedActivity;
@@ -25,9 +25,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FlagPracticeQuizActivity extends AppCompatActivity {
 
     private TextView questionNr;
-    private TextView countryName;
-    private EditText response;
-    private Button confirm;
+    private ImageView flag;
+    private EditText userInput;
+    private Button confirmButton;
+    private String flagUrl;
     private String region;
     private String category;
     private String level;
@@ -42,10 +43,10 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flag_practice_quiz);
 
-        questionNr = findViewById(R.id.pQuiz_count_city);
-        countryName = findViewById(R.id.pCity_text);
-        response = findViewById(R.id.response_pcq);
-        confirm = findViewById(R.id.confirm2);
+        questionNr = findViewById(R.id.pQuiz_count_flag);
+        userInput = findViewById(R.id.response_ffq);
+        confirmButton = findViewById(R.id.confirm4);
+        flag = findViewById(R.id.pFlag_image);
         region = getIntent().getStringExtra("REGION");
         category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
@@ -68,40 +69,42 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
 
         switch (level){
             case "1":
-                countryName.setText(subListOne.get(0).getName());
-                changeCountry(subListOne, "1");
+                flagUrl = subListOne.get(0).getFlag();
+                Glide.with(this).load(flagUrl).into(flag);
+                nextCountry(subListOne, "1");
                 break;
             case "2":
-                countryName.setText(subListTwo.get(0).getName());
-                changeCountry(subListTwo, "2");
+                flagUrl = subListTwo.get(0).getFlag();
+                Glide.with(this).load(flagUrl).into(flag);
+                nextCountry(subListTwo, "2");
                 break;
             case "3":
-                countryName.setText(subListThree.get(0).getName());
-                changeCountry(subListThree, "3");
+                flagUrl = subListThree.get(0).getFlag();
+                Glide.with(this).load(flagUrl).into(flag);
+                nextCountry(subListThree, "3");
                 break;
             case "4":
-                countryName.setText(subListFour.get(0).getName());
-                changeCountry(subListFour, "4");
+                flagUrl = subListFour.get(0).getFlag();
+                Glide.with(this).load(flagUrl).into(flag);
+                nextCountry(subListFour, "4");
                 break;
-            case "5":
-                countryName.setText(countryList.get(0).getName());
-                changeCountry(countryList, "5");
             default:
                 System.out.println("nothing");
         }
     }
 
-    public void changeCountry(final List<Country> subList, final String level){
-        confirm.setOnClickListener(new View.OnClickListener() {
+    public void nextCountry(final List<Country> subList, final String level){
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context =  v.getContext();
-                if(counter!=subList.size()-1){
+                if(counter < subList.size()-1){
                     checkAnswer(subList);
-                    response.setText("");
+                    userInput.setText("");
                     nr++;
                     questionNr.setText(String.format(Locale.getDefault(),"Question %s", nr));
-                    countryName.setText(subList.get(counter+1).getName());
+                    flagUrl = subList.get(counter+1).getFlag();
+                    Glide.with(context).load(flagUrl).into(flag);
                     counter++;
                 }
                 else{
@@ -112,30 +115,27 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
                     intent.putExtra("LEVEL", level);
                     context.startActivity(intent);
                 }
-
             }
         });
     }
 
     public void checkAnswer(List<Country> subList){
-        answer = response.getText().toString().toUpperCase();
+        answer = userInput.getText().toString().toUpperCase();
         if(answer.equals(subList.get(counter).getCapital().toUpperCase())) {
             score++;
             updateScore();
             Toast.makeText(FlagPracticeQuizActivity.this,
                     "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
-        }
-        else
+        } else
             Toast.makeText(FlagPracticeQuizActivity.this,
-                    "Your answer was wrong. The correct answer was: " + subList.get(counter).getCapital(), Toast.LENGTH_SHORT).show();
+                    "Your answer was wrong. The correct answer was: " + subList.get(counter).getName(), Toast.LENGTH_SHORT).show();
     }
 
     public void updateScore(){
         AppDatabase db = AppDatabase.getInstance(this);
         int curScore = db.userDao().getUser().getScore();
-        int newScore = curScore+1;
+        int newScore = curScore + 1;
         db.userDao().updateScorePerRound(score);
         db.userDao().updateScore(newScore);
     }
-
 }
