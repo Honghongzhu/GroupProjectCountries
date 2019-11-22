@@ -25,7 +25,6 @@ import java.util.Locale;
  */
 public class ProfileFragment extends Fragment{
 
-    private ImageView profile;
     private ImageView userPhoto;
     private TextView userName;
     private TextView userScore;
@@ -46,15 +45,6 @@ public class ProfileFragment extends Fragment{
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         Context context = v.getContext();
         AppDatabase db = AppDatabase.getInstance(context);
-
-        profile = v.findViewById(R.id.profile_photo);
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO: set method about profile_button.
-            }
-        });
-
 
         //TODO: create a database or fake data base to get the user information
         userPhoto = v.findViewById(R.id.profile_photo);
