@@ -6,10 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Country.class, User.class}, version = 2)
+@Database(entities = {Country.class, User.class,Badges.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract CountryDao countryDao();
     public abstract UserDao userDao();
+    public abstract BadgesDao badgesDao();
 
     private static AppDatabase instance;
 
