@@ -3,6 +3,7 @@ package com.example.groupprojectcountries.cityGame.completed;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.play.PlayActivity;
+import com.example.groupprojectcountries.profile.ProfileFragment;
 
 import java.util.List;
 import java.util.Locale;
@@ -29,6 +31,7 @@ public class CityFinalResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_results);
         String region = getIntent().getStringExtra("REGION");
+        ProfileFragment.UnlockBadges(region);
 
         AppDatabase db = AppDatabase.getInstance(this);
         score = findViewById(R.id.nPoints);

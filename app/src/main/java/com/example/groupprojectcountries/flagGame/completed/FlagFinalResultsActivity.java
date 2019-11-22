@@ -12,6 +12,7 @@ import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.play.PlayActivity;
+import com.example.groupprojectcountries.profile.ProfileFragment;
 
 import java.util.List;
 import java.util.Locale;
@@ -30,6 +31,7 @@ public class FlagFinalResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_final_results);
 
         String region = getIntent().getStringExtra("REGION");
+        ProfileFragment.UnlockBadges(region);
 
         AppDatabase db = AppDatabase.getInstance(this);
         nPoints = findViewById(R.id.nPoints);

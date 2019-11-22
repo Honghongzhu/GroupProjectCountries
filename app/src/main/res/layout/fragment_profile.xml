@@ -175,7 +175,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/Oceania_badge"
+                android:id="@+id/oceania_badge"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:foreground="#99FFFFFF"
