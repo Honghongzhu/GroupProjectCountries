@@ -9,8 +9,12 @@ import android.widget.TextView;
 
 import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.database.AppDatabase;
+import com.example.groupprojectcountries.database.Country;
+import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.play.PlayActivity;
+import com.example.groupprojectcountries.profile.ProfileFragment;
 
+import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.Nullable;
@@ -19,9 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FlagFinalResultsActivity extends AppCompatActivity {
 
     private Button okButton;
-    private TextView score;
-    private TextView nCorrect;
-    private TextView nWrong;
+    private TextView nPoints;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,18 +31,12 @@ public class FlagFinalResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_final_results);
 
         String region = getIntent().getStringExtra("REGION");
-        String correct = getIntent().getStringExtra("CORRECT");
-        String wrong = getIntent().getStringExtra("WRONG");
-        score = findViewById(R.id.nPoints);
-        nCorrect = findViewById(R.id.nCorrect);
-        nCorrect.setText(correct);
-        nWrong = findViewById(R.id.nWrong);
-        nWrong.setText(wrong);
+        ProfileFragment.UnlockBadges(region);
 
         AppDatabase db = AppDatabase.getInstance(this);
-        score = findViewById(R.id.nPoints);
+        nPoints = findViewById(R.id.nPoints);
         int scoreDb = db.userDao().getUser().getScorePerRound();
-        score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
+        nPoints.setText(String.format(Locale.getDefault(), "%s", scoreDb));
 
         okButton = findViewById(R.id.okButton);
         okButton.setOnClickListener(new View.OnClickListener() {
