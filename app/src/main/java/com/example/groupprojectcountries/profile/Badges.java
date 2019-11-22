@@ -1,26 +1,15 @@
 package com.example.groupprojectcountries.profile;
 
 public class Badges {
-    private int ID;
+
     private String Badge_name;
     private int Badge_image;
-    private int point_requirement;
-    private String continents;
+    private String region;
 
-    public Badges(int ID, String badge_name, int badge_image, int point_requirement, String continents) {
-        this.ID = ID;
+    public Badges(String badge_name, int badge_image, String region) {
         Badge_name = badge_name;
         Badge_image = badge_image;
-        this.point_requirement = point_requirement;
-        this.continents = continents;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
+        this.region = region;
     }
 
     public String getBadge_name() {
@@ -39,19 +28,11 @@ public class Badges {
         Badge_image = badge_image;
     }
 
-    public int getPoint_requirement() {
-        return point_requirement;
+    public String getRegion() {
+        return region;
     }
 
-    public void setPoint_requirement(int point_requirement) {
-        this.point_requirement = point_requirement;
-    }
-
-    public String getContinents() {
-        return continents;
-    }
-
-    public void setContinents(String continents) {
-        this.continents = continents;
+    public void setRegion(String region) {
+        this.region = region;
     }
 }
