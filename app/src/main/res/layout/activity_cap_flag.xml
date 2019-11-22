@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".play.CapFlagActivity"
-    android:background="@drawable/map_bg"
+    android:background="@drawable/game_bg"
     android:padding="15dp">
 
     <TextView

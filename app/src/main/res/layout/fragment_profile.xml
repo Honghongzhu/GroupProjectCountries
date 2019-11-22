@@ -86,6 +86,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:background="@android:colo"
                     android:scaleType="centerInside"
                     android:src="@drawable/africa_allpass" />
 
@@ -95,8 +96,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Africa allpass Badge"
-                    android:textSize="24sp" />
+                    android:text="Africa Conqueror Badge"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -120,8 +121,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Americas allpass Badge"
-                    android:textSize="24sp" />
+                    android:text="Americas Conquerer Badge"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -145,8 +146,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Asia allpass Badge"
-                    android:textSize="24sp" />
+                    android:text="Asia Conqueror Badge"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -170,8 +171,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Europe allpass Badge"
-                    android:textSize="24sp" />
+                    android:text="Europe Conqueror Badge"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -195,8 +196,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Oceania allpass Badge"
-                    android:textSize="24sp" />
+                    android:text="Oceania Conqueror Badge"
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </LinearLayout>
