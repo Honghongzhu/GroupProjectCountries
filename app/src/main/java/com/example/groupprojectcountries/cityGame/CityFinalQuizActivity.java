@@ -74,6 +74,7 @@ public class CityFinalQuizActivity extends AppCompatActivity {
                 } else {
                     checkAnswer();
                     Intent intent = new Intent(context, CityFinalResultsActivity.class);
+                    intent.putExtra("REGION", region);
                     context.startActivity(intent);
                 }
             }

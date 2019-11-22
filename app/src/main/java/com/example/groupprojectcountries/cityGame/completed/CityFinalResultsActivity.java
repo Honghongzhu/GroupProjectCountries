@@ -28,6 +28,7 @@ public class CityFinalResultsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_results);
+        String region = getIntent().getStringExtra("REGION");
 
         AppDatabase db = AppDatabase.getInstance(this);
         score = findViewById(R.id.nPoints);

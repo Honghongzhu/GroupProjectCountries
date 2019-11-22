@@ -82,6 +82,7 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
                 else{
                     checkAnswer();
                     Intent intent = new Intent(context, FlagFinalResultsActivity.class);
+                    intent.putExtra("REGION", region);
                     context.startActivity(intent);
                 }
             }

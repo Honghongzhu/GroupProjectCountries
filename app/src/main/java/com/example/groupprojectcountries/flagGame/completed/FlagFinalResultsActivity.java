@@ -29,6 +29,8 @@ public class FlagFinalResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_results);
 
+        String region = getIntent().getStringExtra("REGION");
+
         AppDatabase db = AppDatabase.getInstance(this);
         nPoints = findViewById(R.id.nPoints);
         int scoreDb = db.userDao().getUser().getScorePerRound();
