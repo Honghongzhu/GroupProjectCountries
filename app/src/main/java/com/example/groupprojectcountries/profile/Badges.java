@@ -1,11 +1,7 @@
-package com.example.groupprojectcountries.database;
+package com.example.groupprojectcountries.profile;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class Badges {
-    @PrimaryKey
+
     private String Badge_name;
     private int Badge_image;
     private String region;
