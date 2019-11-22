@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
-import com.example.groupprojectcountries.asynctask.GetUserAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
@@ -21,7 +19,7 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CityFinalResultsActivity extends AppCompatActivity implements AsyncTaskDelegate {
+public class CityFinalResultsActivity extends AppCompatActivity {
 
     private Button okButton;
     private TextView score;
@@ -30,13 +28,11 @@ public class CityFinalResultsActivity extends AppCompatActivity implements Async
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_results);
-        score = findViewById(R.id.nPoints);
 
         AppDatabase db = AppDatabase.getInstance(this);
-        GetUserAsyncTask getUserAsyncTask = new GetUserAsyncTask();
-        getUserAsyncTask.setDatabase(db);
-        getUserAsyncTask.setDelegate(this);
-        getUserAsyncTask.execute();
+        score = findViewById(R.id.nPoints);
+        int scoreDb = db.userDao().getUser().getScorePerRound();
+        score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
 
         okButton = findViewById(R.id.okButton);
         okButton.setOnClickListener(new View.OnClickListener() {
@@ -47,21 +43,5 @@ public class CityFinalResultsActivity extends AppCompatActivity implements Async
                 context.startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public void handleTaskResult(List<Country> result) {
-
-    }
-
-    @Override
-    public void handleTaskResult(String result) {
-
-    }
-
-    @Override
-    public void handleTaskResult(User result) {
-        int scoreDb = result.getScorePerRound();
-        score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
     }
 }

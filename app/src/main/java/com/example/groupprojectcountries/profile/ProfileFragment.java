@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
-import com.example.groupprojectcountries.asynctask.GetUserAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
@@ -28,7 +26,7 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment implements AsyncTaskDelegate {
+public class ProfileFragment extends Fragment{
 
     private ImageView userPhoto;
     private TextView userName;
@@ -42,6 +40,7 @@ public class ProfileFragment extends Fragment implements AsyncTaskDelegate {
         // Required empty public constructor
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,19 +48,18 @@ public class ProfileFragment extends Fragment implements AsyncTaskDelegate {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         Context context = v.getContext();
         AppDatabase db = AppDatabase.getInstance(context);
-        GetUserAsyncTask getUserAsyncTask = new GetUserAsyncTask();
-        getUserAsyncTask.setDatabase(db);
-        getUserAsyncTask.setDelegate(this);
-        getUserAsyncTask.execute();
 
         //TODO: create a database or fake data base to get the user information
         userPhoto = v.findViewById(R.id.profile_photo);
         //user_photo.setImageResource();//set user profile
 
         userName = v.findViewById(R.id.profile_name);
+        String name = db.userDao().getUser().getName();
+        userName.setText(name);
 
         userScore = v.findViewById(R.id.profile_score);
-
+        int score = db.userDao().getUser().getScore();
+        userScore.setText(String.format(Locale.getDefault(),"Score %s", score));
 
 //        Badges_rv = v.findViewById(R.id.badges_rv);
 //
@@ -73,30 +71,7 @@ public class ProfileFragment extends Fragment implements AsyncTaskDelegate {
 //        mAdapter = new BadgesAdapter();//myDataset
 //        Badges_rv.setAdapter(mAdapter);
 
-
         return v;
-
-
-        }
-
-
-    @Override
-    public void handleTaskResult(List<Country> result) {
-
-    }
-
-    @Override
-    public void handleTaskResult(String result) {
-
-    }
-
-    @Override
-    public void handleTaskResult(User result) {
-        String name = result.getName();
-        userName.setText(name);
-        int score = result.getScore();
-        userScore.setText(String.format(Locale.getDefault(),"Total Points: %s", score));
 
     }
 }
-

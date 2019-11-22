@@ -15,8 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
-import com.example.groupprojectcountries.asynctask.FindCountriesAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
@@ -25,7 +23,7 @@ import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 
 import java.util.List;
 
-public class FlagFlashcardsActivity extends AppCompatActivity implements AsyncTaskDelegate {
+public class FlagFlashcardsActivity extends AppCompatActivity{
 
     private TextView countryName;
     private ImageView flag;
@@ -34,7 +32,6 @@ public class FlagFlashcardsActivity extends AppCompatActivity implements AsyncTa
     private String region;
     private String level;
     private String flagUrl;
-    List<Country> countryList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,14 +40,12 @@ public class FlagFlashcardsActivity extends AppCompatActivity implements AsyncTa
         countryName = findViewById(R.id.fCountry_name_flash);
         flag = findViewById(R.id.country_flag_flash);
         next = findViewById(R.id.next_flag);
+
+        AppDatabase db = AppDatabase.getInstance(this);
         region = getIntent().getStringExtra("REGION");
         level = getIntent().getStringExtra("LEVEL");
 
-        AppDatabase db = AppDatabase.getInstance(this);
-        FindCountriesAsyncTask findCountriesAsyncTask = new FindCountriesAsyncTask();
-        findCountriesAsyncTask.setDatabase(db);
-        findCountriesAsyncTask.setDelegate(this);
-        findCountriesAsyncTask.execute(region);
+        List<Country> countryList = db.countryDao().findCountriesByRegion(region);
 
         int amount = countryList.size() / 4;
 
@@ -110,20 +105,5 @@ public class FlagFlashcardsActivity extends AppCompatActivity implements AsyncTa
                 }
             }
         });
-    }
-
-    @Override
-    public void handleTaskResult(List<Country> result) {
-        countryList = result;
-    }
-
-    @Override
-    public void handleTaskResult(String result) {
-
-    }
-
-    @Override
-    public void handleTaskResult(User result) {
-
     }
 }

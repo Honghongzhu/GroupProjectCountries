@@ -10,10 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
-import com.example.groupprojectcountries.asynctask.FindCountriesAsyncTask;
-import com.example.groupprojectcountries.asynctask.UpdateScoreAsyncTask;
-import com.example.groupprojectcountries.asynctask.UpdateScorePerRoundAsyncTask;
 import com.example.groupprojectcountries.cityGame.completed.CityFinalResultsActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
@@ -25,7 +21,7 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CityFinalQuizActivity extends AppCompatActivity implements AsyncTaskDelegate {
+public class CityFinalQuizActivity extends AppCompatActivity {
 
     private TextView questionNr;
     private TextView countryName;
@@ -38,8 +34,6 @@ public class CityFinalQuizActivity extends AppCompatActivity implements AsyncTas
     private int score;
     private int nr;
     private String answer;
-    private UpdateScorePerRoundAsyncTask updateScorePerRoundAsyncTask;
-    private UpdateScoreAsyncTask updateScoreAsyncTask;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,25 +44,12 @@ public class CityFinalQuizActivity extends AppCompatActivity implements AsyncTas
         userInput = findViewById(R.id.response_fcq);
         confirmButton = findViewById(R.id.confirm1);
         countryName = findViewById(R.id.fCity_text);
-        region = getIntent().getStringExtra("REGION");
 
         AppDatabase db = AppDatabase.getInstance(this);
-
-        updateScoreAsyncTask = new UpdateScoreAsyncTask();
-        updateScoreAsyncTask.setDatabase(db);
-        updateScoreAsyncTask.setDelegate(this);
-        updateScoreAsyncTask.execute(score);
-
-        FindCountriesAsyncTask findCountriesAsyncTask = new FindCountriesAsyncTask();
-        findCountriesAsyncTask.setDatabase(db);
-        findCountriesAsyncTask.setDelegate(this);
-        findCountriesAsyncTask.execute(region);
-
-        updateScorePerRoundAsyncTask = new UpdateScorePerRoundAsyncTask();
-        updateScorePerRoundAsyncTask.setDatabase(db);
-        updateScorePerRoundAsyncTask.setDelegate(this);
+        region = getIntent().getStringExtra("REGION");
+        countryList = db.countryDao().findCountriesByRegion(region);
         score = 0;
-        updateScorePerRoundAsyncTask.execute(score);
+        db.userDao().updateScorePerRound(score);
 
         counter = 0;
         countryName.setText(countryList.get(counter).getName());
@@ -116,22 +97,8 @@ public class CityFinalQuizActivity extends AppCompatActivity implements AsyncTas
         AppDatabase db = AppDatabase.getInstance(this);
         int curScore = db.userDao().getUser().getScore();
         int newScore = curScore + 1;
-        updateScorePerRoundAsyncTask.execute(score);
-        updateScoreAsyncTask.execute(newScore);
+        db.userDao().updateScorePerRound(score);
+        db.userDao().updateScore(newScore);
     }
 
-    @Override
-    public void handleTaskResult(List<Country> result) {
-        countryList = result;
-    }
-
-    @Override
-    public void handleTaskResult(String result) {
-
-    }
-
-    @Override
-    public void handleTaskResult(User result) {
-
-    }
 }

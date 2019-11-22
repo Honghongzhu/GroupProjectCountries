@@ -10,10 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.groupprojectcountries.R;
-import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
-import com.example.groupprojectcountries.asynctask.FindCountriesAsyncTask;
-import com.example.groupprojectcountries.asynctask.UpdateScoreAsyncTask;
-import com.example.groupprojectcountries.asynctask.UpdateScorePerRoundAsyncTask;
 import com.example.groupprojectcountries.cityGame.completed.CityPracticeCompletedActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
@@ -25,7 +21,7 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CityPracticeQuizActivity extends AppCompatActivity implements AsyncTaskDelegate {
+public class CityPracticeQuizActivity extends AppCompatActivity {
 
     private TextView questionNr;
     private TextView countryName;
@@ -39,9 +35,6 @@ public class CityPracticeQuizActivity extends AppCompatActivity implements Async
     private String answer;
     private AppDatabase db;
     private int score;
-    private List<Country> countryList;
-    private UpdateScorePerRoundAsyncTask updateScorePerRoundAsyncTask;
-    private UpdateScoreAsyncTask updateScoreAsyncTask;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,20 +53,8 @@ public class CityPracticeQuizActivity extends AppCompatActivity implements Async
         score = 0;
 
         db = AppDatabase.getInstance(this);
-
-        updateScoreAsyncTask = new UpdateScoreAsyncTask();
-        updateScoreAsyncTask.setDatabase(db);
-        updateScoreAsyncTask.setDelegate(this);
-
-        FindCountriesAsyncTask findCountriesAsyncTask = new FindCountriesAsyncTask();
-        findCountriesAsyncTask.setDatabase(db);
-        findCountriesAsyncTask.setDelegate(this);
-        findCountriesAsyncTask.execute(region);
-
-        updateScorePerRoundAsyncTask = new UpdateScorePerRoundAsyncTask();
-        updateScorePerRoundAsyncTask.setDatabase(db);
-        updateScorePerRoundAsyncTask.setDelegate(this);
-        updateScorePerRoundAsyncTask.execute(score);
+        db.userDao().updateScorePerRound(score);
+        List<Country> countryList = db.countryDao().findCountriesByRegion(region);
 
         int amount = countryList.size() / 4;
 
@@ -146,22 +127,8 @@ public class CityPracticeQuizActivity extends AppCompatActivity implements Async
         AppDatabase db = AppDatabase.getInstance(this);
         int curScore = db.userDao().getUser().getScore();
         int newScore = curScore+1;
-        updateScorePerRoundAsyncTask.execute(score);
-        updateScoreAsyncTask.execute(newScore);
+        db.userDao().updateScorePerRound(score);
+        db.userDao().updateScore(newScore);
     }
 
-    @Override
-    public void handleTaskResult(List<Country> result) {
-        countryList = result;
-    }
-
-    @Override
-    public void handleTaskResult(String result) {
-
-    }
-
-    @Override
-    public void handleTaskResult(User result) {
-
-    }
 }
