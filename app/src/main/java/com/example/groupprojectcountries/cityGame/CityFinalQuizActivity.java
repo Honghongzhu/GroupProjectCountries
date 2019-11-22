@@ -66,8 +66,7 @@ public class CityFinalQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                //if (counter < countryList.size() - 1) {
-                if(counter < 2){
+                if (counter < countryList.size() - 1) {
                     checkAnswer();
                     userInput.setText("");
                     nr++;
