@@ -1,7 +1,9 @@
 package com.example.groupprojectcountries.flagGame;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.flagGame.completed.FlagReadyToPracticeActivity;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 
 import java.util.List;
 
@@ -55,25 +58,25 @@ public class FlagFlashcardsActivity extends AppCompatActivity{
             case "1":
                 countryName.setText(subListOne.get(0).getName());
                 flagUrl = subListOne.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCard(subListOne, "1");
                 break;
             case "2":
                 countryName.setText(subListTwo.get(0).getName());
                 flagUrl = subListTwo.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCard(subListTwo, "2");
                 break;
             case "3":
                 countryName.setText(subListThree.get(0).getName());
                 flagUrl = subListThree.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCard(subListThree, "3");
                 break;
             case "4":
                 countryName.setText(subListFour.get(0).getName());
                 flagUrl = subListFour.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCard(subListFour, "4");
                 break;
             default:
@@ -86,9 +89,11 @@ public class FlagFlashcardsActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Context context =  v.getContext();
+                Activity activity = (Activity) context;
                 if(counter < subList.size()-1) {
                     countryName.setText(subList.get(counter+1).getName());
                     String flagUrl = subList.get(counter+1).getFlag();
+                    GlideToVectorYou.justLoadImage(activity, Uri.parse(flagUrl), flag);
                     Glide.with(context).load(flagUrl).into(flag);
                     counter++;
                 } else{

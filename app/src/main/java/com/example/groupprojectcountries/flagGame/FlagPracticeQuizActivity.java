@@ -1,7 +1,9 @@
 package com.example.groupprojectcountries.flagGame;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.flagGame.completed.FlagPracticeCompletedActivity;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 
 import java.util.List;
 import java.util.Locale;
@@ -70,22 +73,22 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
         switch (level){
             case "1":
                 flagUrl = subListOne.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCountry(subListOne, "1");
                 break;
             case "2":
                 flagUrl = subListTwo.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCountry(subListTwo, "2");
                 break;
             case "3":
                 flagUrl = subListThree.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCountry(subListThree, "3");
                 break;
             case "4":
                 flagUrl = subListFour.get(0).getFlag();
-                Glide.with(this).load(flagUrl).into(flag);
+                GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flag);
                 nextCountry(subListFour, "4");
                 break;
             default:
@@ -98,13 +101,14 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context =  v.getContext();
+                Activity activity = (Activity) context;
                 if(counter < subList.size()-1){
                     checkAnswer(subList);
                     userInput.setText("");
                     nr++;
                     questionNr.setText(String.format(Locale.getDefault(),"Question %s", nr));
                     flagUrl = subList.get(counter+1).getFlag();
-                    Glide.with(context).load(flagUrl).into(flag);
+                    GlideToVectorYou.justLoadImage(activity, Uri.parse(flagUrl), flag);
                     counter++;
                 }
                 else{

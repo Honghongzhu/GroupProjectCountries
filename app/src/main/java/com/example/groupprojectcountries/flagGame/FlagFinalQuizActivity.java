@@ -1,7 +1,9 @@
 package com.example.groupprojectcountries.flagGame;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.flagGame.completed.FlagFinalResultsActivity;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +44,7 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flag_final_quiz);
 
-        questionNr = findViewById(R.id.pQuiz_count_flag);
+        questionNr = findViewById(R.id.fQuiz_count_flag);
         userInput = findViewById(R.id.response_ffq);
         confirmButton = findViewById(R.id.confirm3);
         flagImage = findViewById(R.id.fFlag_image);
@@ -54,7 +57,7 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
 
         counter = 0;
         flagUrl = countryList.get(counter).getFlag();
-        Glide.with(this).load(flagUrl).into(flagImage);
+        GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flagImage);
         questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
 
         nr = 1;
@@ -66,13 +69,14 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context =  v.getContext();
+                Activity activity = (Activity) context;
                 if(counter < countryList.size()-1){
                     checkAnswer();
                     userInput.setText("");
                     nr++;
                     questionNr.setText(String.format(Locale.getDefault(),"Question %s", nr));
                     flagUrl = countryList.get(counter+1).getFlag();
-                    Glide.with(context).load(flagUrl).into(flagImage);
+                    GlideToVectorYou.justLoadImage(activity, Uri.parse(flagUrl), flagImage);
                     counter++;
                 }
                 else{
