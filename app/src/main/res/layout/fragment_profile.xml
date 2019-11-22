@@ -75,6 +75,8 @@
                 android:id="@+id/africa_badge"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:background="#00FFFFFF"
+                android:foreground="#99FFFFFF"
                 android:orientation="horizontal"
                 tools:visibility="visible">
 
@@ -101,6 +103,7 @@
                 android:id="@+id/americas_badge"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:foreground="#99FFFFFF"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -125,6 +128,7 @@
                 android:id="@+id/asia_badge"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:foreground="#99FFFFFF"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -149,6 +153,7 @@
                 android:id="@+id/europe_badge"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:foreground="#99FFFFFF"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -173,6 +178,7 @@
                 android:id="@+id/Oceania_badge"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:foreground="#99FFFFFF"
                 android:orientation="horizontal">
 
                 <ImageView
