@@ -56,7 +56,7 @@ public class ProfileFragment extends Fragment{
 
         userScore = v.findViewById(R.id.profile_score);
         int score = db.userDao().getUser().getScore();
-        userScore.setText(String.format(Locale.getDefault(),"Score %s", score));
+        userScore.setText(String.format(Locale.getDefault(),"Total Points: %s", score));
 
         Badges_rv = v.findViewById(R.id.badges_rv);
 

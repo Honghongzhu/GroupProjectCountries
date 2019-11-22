@@ -15,7 +15,7 @@
     <string name="ready">Are you ready for your practice quiz?</string>
     <string name="no">No, please repeat\n the flashcards</string>
     <string name="yes">Yes, I am ready!</string>
-    <string name="complete">Well done!\n\n You completed the practice\n quiz with the following results:</string>
+    <string name="complete">WELL DONE!\n\n You completed the practice\n quiz with the following results:</string>
     <string name="points">Total points earned:</string>
     <string name="correct">Number of correct answers: </string>
     <string name="wrong">Number of incorrect answers: </string>
@@ -23,7 +23,7 @@
     <string name="badges">Badges Earned:</string>
     <string name="countryname">Country Name: </string>
     <string name="capitalcity">Capital City: </string>
-    <string name="results">Congratulations!\n\n You completed the final quiz\nwith the following results:</string>
+    <string name="results">CONGRATULATIONS!\n\n You completed the final quiz\nwith the following results:</string>
     <string name="pq_title">Practice Quiz</string>
     <string name="answer">Answer: </string>
     <string name="fq_title">Final Quiz</string>
