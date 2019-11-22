@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.example.groupprojectcountries.R;
 import com.example.groupprojectcountries.database.AppDatabase;
 
+import java.util.Locale;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -59,10 +61,12 @@ public class ProfileFragment extends Fragment{
         //user_photo.setImageResource();//set user profile
 
         userName = v.findViewById(R.id.profile_name);
-        db.userDao().getUser().getName();
+        String name = db.userDao().getUser().getName();
+        userName.setText(name);
 
         userScore = v.findViewById(R.id.profile_score);
-        db.userDao().getUser().getScore();
+        int score = db.userDao().getUser().getScore();
+        userScore.setText(String.format(Locale.getDefault(),"%s", score));
 
         Badges_rv = v.findViewById(R.id.badges_rv);
 
