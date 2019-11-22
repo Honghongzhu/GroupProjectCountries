@@ -86,7 +86,6 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@android:colo"
                     android:scaleType="centerInside"
                     android:src="@drawable/africa_allpass" />
 
