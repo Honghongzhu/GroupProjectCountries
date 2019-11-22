@@ -45,7 +45,6 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
         userInput = findViewById(R.id.response_pcq);
         confirmButton = findViewById(R.id.confirm2);
         region = getIntent().getStringExtra("REGION");
-        category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
 
         counter = 0;
@@ -102,7 +101,6 @@ public class CityPracticeQuizActivity extends AppCompatActivity {
                     checkAnswer(subList);
                     Intent intent = new Intent(context, CityPracticeCompletedActivity.class);
                     intent.putExtra("REGION", region);
-                    intent.putExtra("CATEGORY", category);
                     intent.putExtra("LEVEL", level);
                     context.startActivity(intent);
                 }

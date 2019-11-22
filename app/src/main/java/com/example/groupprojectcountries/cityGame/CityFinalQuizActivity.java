@@ -36,13 +36,14 @@ public class CityFinalQuizActivity extends AppCompatActivity {
     private String region;
     private int score;
     private int nr;
+    private String answer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_final_quiz);
 
-        questionNr = findViewById(R.id.pQuiz_count_city);
+        questionNr = findViewById(R.id.fQuiz_count_city);
         userInput = findViewById(R.id.response_fcq);
         confirmButton = findViewById(R.id.confirm1);
         countryName = findViewById(R.id.fCity_text);
@@ -50,11 +51,10 @@ public class CityFinalQuizActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getInstance(this);
         region = getIntent().getStringExtra("REGION");
         countryList = db.countryDao().getCountriesByRegion(region);
-        score = 1;
+        score = 0;
         db.userDao().updateScorePerRound(score);
 
         counter = 0;
-        correctAnswer = countryList.get(counter).getName().toUpperCase();
         countryName.setText(countryList.get(counter).getName());
         questionNr.setText(String.format(Locale.getDefault(), "Question %s", 1));
 
@@ -84,7 +84,8 @@ public class CityFinalQuizActivity extends AppCompatActivity {
     }
 
     public void checkAnswer() {
-        String answer = userInput.getText().toString().toUpperCase();
+        answer = userInput.getText().toString().toUpperCase();
+        correctAnswer = countryList.get(counter).getCapital().toUpperCase();
         if (answer.equals(correctAnswer)) {
             score++;
             updateScore();
@@ -92,7 +93,7 @@ public class CityFinalQuizActivity extends AppCompatActivity {
                     "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
         } else
             Toast.makeText(CityFinalQuizActivity.this,
-                    "Your answer was wrong. The correct answer was: " + countryList.get(counter).getName(), Toast.LENGTH_SHORT).show();
+                    "Your answer was wrong. The correct answer was: " + countryList.get(counter).getCapital(), Toast.LENGTH_SHORT).show();
     }
 
     public void updateScore() {

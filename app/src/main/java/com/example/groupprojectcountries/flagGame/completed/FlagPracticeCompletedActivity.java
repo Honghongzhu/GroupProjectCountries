@@ -22,6 +22,7 @@ public class FlagPracticeCompletedActivity extends AppCompatActivity {
 
     private Button okButton;
     private TextView score;
+    private String region;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class FlagPracticeCompletedActivity extends AppCompatActivity {
         score = findViewById(R.id.nPoints);
         int scoreDb = db.userDao().getUser().getScorePerRound();
         score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
+        region = getIntent().getStringExtra("REGION");
 
         okButton = findViewById(R.id.okButton);
         okButton.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +40,7 @@ public class FlagPracticeCompletedActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, PlayActivity.class);
+                intent.putExtra("REGION", region);
                 context.startActivity(intent);
             }
         });

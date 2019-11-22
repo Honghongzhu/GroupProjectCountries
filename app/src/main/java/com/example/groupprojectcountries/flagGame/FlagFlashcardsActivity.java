@@ -26,7 +26,6 @@ public class FlagFlashcardsActivity extends AppCompatActivity{
     private Button next;
     private int counter;
     private String region;
-    private String category;
     private String level;
     private String flagUrl;
 
@@ -40,7 +39,6 @@ public class FlagFlashcardsActivity extends AppCompatActivity{
 
         AppDatabase db = AppDatabase.getInstance(this);
         region = getIntent().getStringExtra("REGION");
-        category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
 
         List<Country> countryList = db.countryDao().getCountriesByRegion(region);
@@ -96,7 +94,6 @@ public class FlagFlashcardsActivity extends AppCompatActivity{
                 } else{
                     Intent intent = new Intent(context, FlagReadyToPracticeActivity.class);
                     intent.putExtra("REGION", region);
-                    intent.putExtra("CATEGORY", category);
                     intent.putExtra("LEVEL", level);
                     context.startActivity(intent);
                 }

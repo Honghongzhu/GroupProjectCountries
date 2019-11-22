@@ -19,7 +19,6 @@ public class CityReadyToPracticeActivity extends AppCompatActivity {
     private Button noButton;
     private Button yesButton;
     private String region;
-    private String category;
     private String level;
 
     @Override
@@ -30,7 +29,6 @@ public class CityReadyToPracticeActivity extends AppCompatActivity {
         noButton = findViewById(R.id.noButton);
         yesButton = findViewById(R.id.yesButton);
         region = getIntent().getStringExtra("REGION");
-        category = getIntent().getStringExtra("CATEGORY"); //not necessary
         level = getIntent().getStringExtra("LEVEL");
 
         //If the user is not ready for the practice quiz, the flashcards will be shown again
@@ -40,7 +38,6 @@ public class CityReadyToPracticeActivity extends AppCompatActivity {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, CityFlashcardsActivity.class);
                 intent.putExtra("REGION", region);
-                intent.putExtra("CATEGORY", category);
                 intent.putExtra("LEVEL", level);
                 context.startActivity(intent);
             }
@@ -53,7 +50,6 @@ public class CityReadyToPracticeActivity extends AppCompatActivity {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, CityPracticeQuizActivity.class);
                 intent.putExtra("REGION", region);
-                intent.putExtra("CATEGORY", category);
                 intent.putExtra("LEVEL", level);
                 context.startActivity(intent);
             }

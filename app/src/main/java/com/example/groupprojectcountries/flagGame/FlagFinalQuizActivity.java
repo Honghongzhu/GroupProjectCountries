@@ -30,6 +30,7 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
     private Integer counter;
     private List<Country> countryList;
     private String correctAnswer;
+    private String answer;
     private String flagUrl;
     private String region;
     private int score;
@@ -48,11 +49,10 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getInstance(this);
         region = getIntent().getStringExtra("REGION");
         countryList = db.countryDao().getCountriesByRegion(region);
-        score = 1;
+        score = 0;
         db.userDao().updateScorePerRound(score);
 
         counter = 0;
-        correctAnswer = countryList.get(counter).getName().toUpperCase();
         flagUrl = countryList.get(counter).getFlag();
         Glide.with(this).load(flagUrl).into(flagImage);
         questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
@@ -85,7 +85,8 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
     }
 
     public void checkAnswer(){
-        String answer = userInput.getText().toString().toUpperCase();
+        answer = userInput.getText().toString().toUpperCase();
+        correctAnswer = countryList.get(counter).getName().toUpperCase();
         if(answer.equals(correctAnswer)) {
             score++;
             updateScore();
