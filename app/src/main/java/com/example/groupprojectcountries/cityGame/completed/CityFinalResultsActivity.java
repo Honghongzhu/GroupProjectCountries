@@ -23,15 +23,24 @@ public class CityFinalResultsActivity extends AppCompatActivity {
 
     private Button okButton;
     private TextView score;
+    private TextView nCorrect;
+    private TextView nWrong;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_results);
         String region = getIntent().getStringExtra("REGION");
+        String correct = getIntent().getStringExtra("CORRECT");
+        String wrong = getIntent().getStringExtra("WRONG");
+        score = findViewById(R.id.nPoints);
+        nCorrect = findViewById(R.id.nCorrect);
+        nCorrect.setText(correct);
+        nWrong = findViewById(R.id.nWrong);
+        nWrong.setText(wrong);
+
 
         AppDatabase db = AppDatabase.getInstance(this);
-        score = findViewById(R.id.nPoints);
         int scoreDb = db.userDao().getUser().getScorePerRound();
         score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
 

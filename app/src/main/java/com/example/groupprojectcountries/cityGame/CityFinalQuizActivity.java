@@ -34,6 +34,7 @@ public class CityFinalQuizActivity extends AppCompatActivity {
     private int score;
     private int nr;
     private String answer;
+    private int nWrong;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class CityFinalQuizActivity extends AppCompatActivity {
         countryName.setText(countryList.get(counter).getName());
         questionNr.setText(String.format(Locale.getDefault(), "Question %s", 1));
 
+        nWrong = 0;
         nr = 1;
         nextQuestion();
     }
@@ -64,7 +66,8 @@ public class CityFinalQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                if (counter < countryList.size() - 1) {
+                //if (counter < countryList.size() - 1) {
+                if(counter < 2){
                     checkAnswer();
                     userInput.setText("");
                     nr++;
@@ -75,6 +78,8 @@ public class CityFinalQuizActivity extends AppCompatActivity {
                     checkAnswer();
                     Intent intent = new Intent(context, CityFinalResultsActivity.class);
                     intent.putExtra("REGION", region);
+                    intent.putExtra("CORRECT", Integer.toString(score));
+                    intent.putExtra("WRONG", Integer.toString(nWrong));
                     context.startActivity(intent);
                 }
             }
@@ -89,9 +94,11 @@ public class CityFinalQuizActivity extends AppCompatActivity {
             updateScore();
             Toast.makeText(CityFinalQuizActivity.this,
                     "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
-        } else
+        } else {
+            nWrong++;
             Toast.makeText(CityFinalQuizActivity.this,
                     "Your answer was wrong. The correct answer was: " + countryList.get(counter).getCapital(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void updateScore() {

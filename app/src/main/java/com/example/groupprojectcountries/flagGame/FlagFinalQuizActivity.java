@@ -38,6 +38,7 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
     private String region;
     private int score;
     private int nr;
+    private int nWrong;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
         GlideToVectorYou.justLoadImage(this, Uri.parse(flagUrl), flagImage);
         questionNr.setText(String.format(Locale.getDefault(),"Question %s", 1));
 
+        nWrong = 0;
         nr = 1;
         nextQuestion();
     }
@@ -83,6 +85,8 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
                     checkAnswer();
                     Intent intent = new Intent(context, FlagFinalResultsActivity.class);
                     intent.putExtra("REGION", region);
+                    intent.putExtra("CORRECT", Integer.toString(score));
+                    intent.putExtra("WRONG", Integer.toString(nWrong));
                     context.startActivity(intent);
                 }
             }
@@ -97,9 +101,11 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
             updateScore();
             Toast.makeText(FlagFinalQuizActivity.this,
                     "Your answer was correct! You've earned 1 point", Toast.LENGTH_SHORT).show();
-        } else
+        } else {
+            nWrong++;
             Toast.makeText(FlagFinalQuizActivity.this,
                     "Your answer was wrong. The correct answer was: " + countryList.get(counter).getName(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void updateScore(){
