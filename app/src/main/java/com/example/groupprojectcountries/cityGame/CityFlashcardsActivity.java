@@ -12,13 +12,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.groupprojectcountries.R;
+import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
+import com.example.groupprojectcountries.asynctask.FindCountriesAsyncTask;
+import com.example.groupprojectcountries.asynctask.InsertCountriesAsyncTask;
 import com.example.groupprojectcountries.cityGame.completed.CityReadyToPracticeActivity;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
+import com.example.groupprojectcountries.database.User;
+import com.example.groupprojectcountries.play.RegionRecyclerFragment;
 
 import java.util.List;
 
-public class CityFlashcardsActivity extends AppCompatActivity {
+public class CityFlashcardsActivity extends AppCompatActivity implements AsyncTaskDelegate {
 
     private TextView countryName;
     private TextView capitalCity;
@@ -26,6 +31,7 @@ public class CityFlashcardsActivity extends AppCompatActivity {
     private int counter;
     private String region;
     private String level;
+    List<Country> countryList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,12 +41,14 @@ public class CityFlashcardsActivity extends AppCompatActivity {
         countryName = findViewById(R.id.country_name_flash);
         capitalCity = findViewById(R.id.country_city_flash);
         next = findViewById(R.id.next_city);
-
-        AppDatabase db = AppDatabase.getInstance(this);
         region = getIntent().getStringExtra("REGION");
         level = getIntent().getStringExtra("LEVEL");
 
-        List<Country> countryList = db.countryDao().getCountriesByRegion(region);
+        AppDatabase db = AppDatabase.getInstance(this);
+        FindCountriesAsyncTask findCountriesAsyncTask = new FindCountriesAsyncTask();
+        findCountriesAsyncTask.setDatabase(db);
+        findCountriesAsyncTask.setDelegate(this);
+        findCountriesAsyncTask.execute(region);
 
         int amount = countryList.size() / 4;
 
@@ -93,5 +101,20 @@ public class CityFlashcardsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void handleTaskResult(List<Country> result) {
+        countryList = result;
+    }
+
+    @Override
+    public void handleTaskResult(String result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(User result) {
+
     }
 }

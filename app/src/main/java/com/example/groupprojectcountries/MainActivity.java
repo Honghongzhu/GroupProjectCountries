@@ -14,7 +14,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
+import com.example.groupprojectcountries.asynctask.InsertUserAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
+import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.play.PlayActivity;
 import com.google.gson.Gson;
@@ -22,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AsyncTaskDelegate {
 
     private Button playButton;
 
@@ -43,11 +46,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         AppDatabase db = AppDatabase.getInstance(this);
-        db.userDao().insertUser(new User(1, "Username"));
-//        int score = db.userDao().getUser().getScore();
-//        int newScore = score+2;
-//        db.userDao().updateScore(newScore);
-//        User user = db.userDao().getUser();
+        InsertUserAsyncTask insertUserAsyncTask = new InsertUserAsyncTask();
+        insertUserAsyncTask.setDatabase(db);
+        insertUserAsyncTask.setDelegate(this);
+        insertUserAsyncTask.execute(new User(1, "Username"));
+    }
+
+    @Override
+    public void handleTaskResult(List<Country> result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(String result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(User result) {
 
     }
 }

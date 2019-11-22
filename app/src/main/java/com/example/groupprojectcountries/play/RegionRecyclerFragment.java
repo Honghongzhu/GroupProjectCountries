@@ -19,6 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.groupprojectcountries.R;
+import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
+import com.example.groupprojectcountries.asynctask.InsertCountriesAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
@@ -31,7 +33,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegionRecyclerFragment extends Fragment {
+public class RegionRecyclerFragment extends Fragment implements AsyncTaskDelegate {
     private RecyclerView recyclerView;
     private ArrayList<Region> regions;
     private RecyclerView.LayoutManager layoutManager;
@@ -65,7 +67,12 @@ public class RegionRecyclerFragment extends Fragment {
                 Country[] countryArray = gson.fromJson(response, Country[].class);
                 List<Country> countryList = Arrays.asList(countryArray);
                 AppDatabase db = AppDatabase.getInstance(getContext());
-                db.countryDao().insertAll(countryList);
+                InsertCountriesAsyncTask insertCountriesAsyncTask = new InsertCountriesAsyncTask();
+                insertCountriesAsyncTask.setDatabase(db);
+                insertCountriesAsyncTask.setDelegate(RegionRecyclerFragment.this);
+
+                Country[] countries = countryList.toArray(new Country[countryList.size()]);
+                insertCountriesAsyncTask.execute(countries);
                 queue.stop();
             }
         };
@@ -80,8 +87,21 @@ public class RegionRecyclerFragment extends Fragment {
         System.out.println(url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener, errorListener);
         queue.add(stringRequest);
-
         return v;
     }
 
+    @Override
+    public void handleTaskResult(List<Country> result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(String result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(User result) {
+
+    }
 }

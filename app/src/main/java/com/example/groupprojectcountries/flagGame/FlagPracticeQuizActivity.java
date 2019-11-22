@@ -12,10 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.groupprojectcountries.R;
+import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
+import com.example.groupprojectcountries.asynctask.FindCountriesAsyncTask;
+import com.example.groupprojectcountries.asynctask.UpdateScoreAsyncTask;
+import com.example.groupprojectcountries.asynctask.UpdateScorePerRoundAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
+import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.flagGame.completed.FlagPracticeCompletedActivity;
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 
@@ -25,7 +29,7 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class FlagPracticeQuizActivity extends AppCompatActivity {
+public class FlagPracticeQuizActivity extends AppCompatActivity implements AsyncTaskDelegate {
 
     private TextView questionNr;
     private ImageView flag;
@@ -40,6 +44,9 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
     private String answer;
     private AppDatabase db;
     private int score;
+    private List<Country> countryList;
+    private UpdateScorePerRoundAsyncTask updateScorePerRoundAsyncTask;
+    private UpdateScoreAsyncTask updateScoreAsyncTask;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,8 +66,19 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
         score = 0;
 
         db = AppDatabase.getInstance(this);
-        db.userDao().updateScorePerRound(score);
-        List<Country> countryList = db.countryDao().getCountriesByRegion(region);
+        updateScoreAsyncTask = new UpdateScoreAsyncTask();
+        updateScoreAsyncTask.setDatabase(db);
+        updateScoreAsyncTask.setDelegate(this);
+
+        FindCountriesAsyncTask findCountriesAsyncTask = new FindCountriesAsyncTask();
+        findCountriesAsyncTask.setDatabase(db);
+        findCountriesAsyncTask.setDelegate(this);
+        findCountriesAsyncTask.execute(region);
+
+        updateScorePerRoundAsyncTask = new UpdateScorePerRoundAsyncTask();
+        updateScorePerRoundAsyncTask.setDatabase(db);
+        updateScorePerRoundAsyncTask.setDelegate(this);
+        updateScorePerRoundAsyncTask.execute(score);
 
         int amount = countryList.size() / 4;
 
@@ -139,7 +157,22 @@ public class FlagPracticeQuizActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getInstance(this);
         int curScore = db.userDao().getUser().getScore();
         int newScore = curScore + 1;
-        db.userDao().updateScorePerRound(score);
-        db.userDao().updateScore(newScore);
+        updateScorePerRoundAsyncTask.execute(score);
+        updateScoreAsyncTask.execute(newScore);
+    }
+
+    @Override
+    public void handleTaskResult(List<Country> result) {
+        countryList = result;
+    }
+
+    @Override
+    public void handleTaskResult(String result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(User result) {
+
     }
 }

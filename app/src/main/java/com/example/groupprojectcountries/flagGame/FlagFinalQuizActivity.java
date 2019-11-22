@@ -12,10 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.groupprojectcountries.R;
+import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
+import com.example.groupprojectcountries.asynctask.FindCountriesAsyncTask;
+import com.example.groupprojectcountries.asynctask.UpdateScoreAsyncTask;
+import com.example.groupprojectcountries.asynctask.UpdateScorePerRoundAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
 import com.example.groupprojectcountries.database.Country;
+import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.flagGame.completed.FlagFinalResultsActivity;
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 
@@ -25,7 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 import java.util.Locale;
 
-public class FlagFinalQuizActivity extends AppCompatActivity {
+public class FlagFinalQuizActivity extends AppCompatActivity implements AsyncTaskDelegate {
     private TextView questionNr;
     private EditText userInput;
     private Button confirmButton;
@@ -38,6 +42,8 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
     private String region;
     private int score;
     private int nr;
+    private UpdateScorePerRoundAsyncTask updateScorePerRoundAsyncTask;
+    private UpdateScoreAsyncTask updateScoreAsyncTask;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,12 +54,25 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
         userInput = findViewById(R.id.response_ffq);
         confirmButton = findViewById(R.id.confirm3);
         flagImage = findViewById(R.id.fFlag_image);
+        region = getIntent().getStringExtra("REGION");
 
         AppDatabase db = AppDatabase.getInstance(this);
-        region = getIntent().getStringExtra("REGION");
-        countryList = db.countryDao().getCountriesByRegion(region);
+
+        updateScoreAsyncTask = new UpdateScoreAsyncTask();
+        updateScoreAsyncTask.setDatabase(db);
+        updateScoreAsyncTask.setDelegate(this);
+        updateScoreAsyncTask.execute(score);
+
+        FindCountriesAsyncTask findCountriesAsyncTask = new FindCountriesAsyncTask();
+        findCountriesAsyncTask.setDatabase(db);
+        findCountriesAsyncTask.setDelegate(this);
+        findCountriesAsyncTask.execute(region);
+
+        updateScorePerRoundAsyncTask = new UpdateScorePerRoundAsyncTask();
+        updateScorePerRoundAsyncTask.setDatabase(db);
+        updateScorePerRoundAsyncTask.setDelegate(this);
         score = 0;
-        db.userDao().updateScorePerRound(score);
+        updateScorePerRoundAsyncTask.execute(score);
 
         counter = 0;
         flagUrl = countryList.get(counter).getFlag();
@@ -107,5 +126,20 @@ public class FlagFinalQuizActivity extends AppCompatActivity {
         int newScore = curScore + 1;
         db.userDao().updateScorePerRound(score);
         db.userDao().updateScore(newScore);
+    }
+
+    @Override
+    public void handleTaskResult(List<Country> result) {
+        countryList = result;
+    }
+
+    @Override
+    public void handleTaskResult(String result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(User result) {
+
     }
 }

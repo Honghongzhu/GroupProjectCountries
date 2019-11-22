@@ -8,17 +8,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.groupprojectcountries.R;
+import com.example.groupprojectcountries.asynctask.AsyncTaskDelegate;
+import com.example.groupprojectcountries.asynctask.GetUserAsyncTask;
 import com.example.groupprojectcountries.database.AppDatabase;
+import com.example.groupprojectcountries.database.Country;
 import com.example.groupprojectcountries.database.User;
 import com.example.groupprojectcountries.play.LevelActivity;
 import com.example.groupprojectcountries.play.PlayActivity;
 
+import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class FlagPracticeCompletedActivity extends AppCompatActivity {
+public class FlagPracticeCompletedActivity extends AppCompatActivity implements AsyncTaskDelegate {
 
     private Button okButton;
     private TextView score;
@@ -28,10 +32,13 @@ public class FlagPracticeCompletedActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_completed);
-        AppDatabase db = AppDatabase.getInstance(this);
         score = findViewById(R.id.nPoints);
-        int scoreDb = db.userDao().getUser().getScorePerRound();
-        score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
+        AppDatabase db = AppDatabase.getInstance(this);
+        GetUserAsyncTask getUserAsyncTask = new GetUserAsyncTask();
+        getUserAsyncTask.setDatabase(db);
+        getUserAsyncTask.setDelegate(this);
+        getUserAsyncTask.execute();
+
         region = getIntent().getStringExtra("REGION");
 
         okButton = findViewById(R.id.okButton);
@@ -44,5 +51,21 @@ public class FlagPracticeCompletedActivity extends AppCompatActivity {
                 context.startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void handleTaskResult(List<Country> result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(String result) {
+
+    }
+
+    @Override
+    public void handleTaskResult(User result) {
+        int scoreDb = result.getScorePerRound();
+        score.setText(String.format(Locale.getDefault(), "%s", scoreDb));
     }
 }

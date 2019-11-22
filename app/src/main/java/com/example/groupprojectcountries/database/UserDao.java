@@ -14,9 +14,6 @@ public interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUser(User user);
 
-    @Query("SELECT * FROM user WHERE id LIKE :id")
-    User findUserById(int id);
-
     @Query("UPDATE user SET score =:score")
     void updateScore(int score);
 

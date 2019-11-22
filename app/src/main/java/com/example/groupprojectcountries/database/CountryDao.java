@@ -13,7 +13,7 @@ public interface CountryDao {
     List<Country> getAll();
 
     @Query("SELECT * FROM country WHERE region = :region")
-    List<Country> getCountriesByRegion(String region);
+    List<Country> findCountriesByRegion(String region);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<Country> countries);
