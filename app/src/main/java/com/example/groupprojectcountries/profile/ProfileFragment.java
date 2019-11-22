@@ -58,15 +58,15 @@ public class ProfileFragment extends Fragment{
         int score = db.userDao().getUser().getScore();
         userScore.setText(String.format(Locale.getDefault(),"Total Points: %s", score));
 
-        Badges_rv = v.findViewById(R.id.badges_rv);
-
-        Badges_rv.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(v.getContext());
-        Badges_rv.setLayoutManager(layoutManager);
-
-        mAdapter = new BadgesAdapter();//myDataset
-        Badges_rv.setAdapter(mAdapter);
+//        Badges_rv = v.findViewById(R.id.badges_rv);
+////
+////        Badges_rv.setHasFixedSize(true);
+////
+////        layoutManager = new LinearLayoutManager(v.getContext());
+////        Badges_rv.setLayoutManager(layoutManager);
+////
+////        mAdapter = new BadgesAdapter();//myDataset
+////        Badges_rv.setAdapter(mAdapter);
 
 
         return v;
