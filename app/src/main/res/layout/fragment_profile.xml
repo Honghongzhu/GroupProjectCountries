@@ -95,8 +95,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Africa Conqueror Badge"
-                    android:textSize="15sp" />
+                    android:text="AFRICA CONQUEROR BADGE\n achieved when this region's final quiz is completed"
+                    android:textSize="10sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -120,8 +121,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Americas Conquerer Badge"
-                    android:textSize="15sp" />
+                    android:text="AMERICAS CONQUEROR BADGE\n achieved when this region's final quiz is completed. "
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -145,8 +146,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Asia Conqueror Badge"
-                    android:textSize="15sp" />
+                    android:text="ASIA CONQUEROR BADGE\n achieved when this region's final quiz is completed. "
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -170,8 +171,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Europe Conqueror Badge"
-                    android:textSize="15sp" />
+                    android:text="EUROPE CONQUEROR BADGE\n achieved when this region's final quiz is completed. "
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -195,8 +196,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Oceania Conqueror Badge"
-                    android:textSize="15sp" />
+                    android:text="OCEANIA CONQUEROR BADGE\n achieved when this region's final quiz is completed. "
+                    android:textSize="10sp" />
             </LinearLayout>
 
         </LinearLayout>
